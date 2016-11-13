@@ -1,3 +1,7 @@
+.idea/
+_build/
+.sass-cache/
+
 # Logs
 logs
 *.log
