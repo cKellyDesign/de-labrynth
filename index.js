@@ -3,15 +3,18 @@ var path = require('path');
 var express = require('express');
 
 var app = express();
-
+var options = { root: __dirname + "/"} ;
 app.set('port', 8080);
 app.set('case sensitive routing', false);
 
 app.get('/', function(req, res) {
-    res.send('<html><head>'
-        + '<script src="/scripts/app.js"></script>'
-        + '<link href="/styles/styles.css" rel="stylesheet"/>'
-        + '</head><body><h1>Hello World</h1></body></html>');
+
+    res.sendFile("index.html",options, function (err) {
+        if (err) {
+            console.log(err);
+            res.send(err.status);
+        }
+    });
 });
 
 

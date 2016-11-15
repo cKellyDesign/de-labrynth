@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         watch : {
             // watch Sass files to rerun SASS and reload page
             css : {
-                files: ['_app/styles/*.scss', '_app/styles/**/*.scss'],
+                files: ['_app/scss/*.scss', '_app/scss/**/*.scss'],
                 tasks: ['sass:dev'],
                 option: {
                     livereload: true
@@ -44,6 +44,15 @@ module.exports = function(grunt) {
                 }
             },
 
+            // watch template files to recompile and reload
+            html : {
+                files: ['_app/templates/*.html'],
+                tasks: ['copy:html'],
+                options: {
+                    livereload: true
+                }
+            },
+
             // watch Sever files to rerun grunt-express-server and reload
             files : {
                 files : [
@@ -51,7 +60,8 @@ module.exports = function(grunt) {
                 ],
                 tasks : ['express:dev'],
                 options : {
-                    livereload: true
+                    livereload: true,
+                    spawn: false
                 }
             }
         },
@@ -62,12 +72,20 @@ module.exports = function(grunt) {
                 files : [
                     { "cwd": "_app/js/", "src": ["**"], "dest": "_build/js", "expand": true },
                     { "cwd": "_app/images/", "src": ["**"], "dest": "_build/images", "expand": true },
-                    { "cwd": "_app/gfx/", "src": ["**"], "dest": "_build/gfx", "expand": true }
+                    { "cwd": "_app/gfx/", "src": ["**"], "dest": "_build/gfx", "expand": true },
+                    { "cwd": "_app/templates/", "src": ["**"], "dest": "_build/", "expand": true },
+                    { "cwd": "_app/templates/", "src": ["**"], "dest": "", "expand": true }
                 ]
             },
             js: {
                 files: [
                     { "cwd": "_app/js/", "src": ["**"], "dest": "_build/js", "expand": true }
+                ]
+            },
+            html: {
+                files: [
+                    { "cwd": "_app/templates/", "src": ["**"], "dest": "_build/", "expand": true },
+                    { "cwd": "_app/templates/", "src": ["**"], "dest": "", "expand": true }
                 ]
             }
         }
