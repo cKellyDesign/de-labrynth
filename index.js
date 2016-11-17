@@ -9,10 +9,10 @@ app.set('case sensitive routing', false);
 
 app.get('/', function(req, res) {
 
-    res.sendFile("index.html",options, function (err) {
+    res.sendFile("index.html", options, function (err) {
         if (err) {
             console.log(err);
-            res.send(err.status);
+            res.send('Error - ', err.status);
         }
     });
 });
