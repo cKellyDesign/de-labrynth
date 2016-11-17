@@ -6,9 +6,106 @@
     <link href="/styles/styles.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>YAY</p>
+    <div id="AppEl"></div>
 
+    <script type="text/html" id="AppTemplate" class="hide">
+        <nav id="Nav"></nav>
+        <header id="Header" class="container">
+            <a href="/">
+                <img id="Logo" src="">
+            </a>
+            <h2>Husky Starter Kit</h2>
+            <p id="PageDescEl"><%= blurb %></p>
+        </header>
+        <main id="Content" class="container">
+            <!-- Checklist Page Link Panels Render Here -->
+        </main>
+    </script>
+
+    <script type="text/html" id="ChecklistPageLinkPanel" class="hide">
+        <div class="checklist_page_link_panel">
+            <a href="/">
+                <h3 class="panel-title"><%= title %></h3>
+            </a>
+        </div>
+    </script>
+    <script>
+        window.dLab = window.dLab || {};
+        window.dLab.viewModel = window.dLab.viewModel || {
+                    nav : {
+                        items: [
+                            {
+                                title: 'Home',
+                                url: '/'
+                            },{
+                                title: 'Profile',
+                                url: '/#'
+                            },{
+                                title: 'Help',
+                                url: '/#'
+                            },{
+                                title: 'Log Out',
+                                url: '/#'
+                            }
+                        ]
+                    },
+                    home : {
+                        blurb: 'site level summary / blurb can go here',
+                        landingIMG : {
+                            title: 'img title',
+                            alt: 'img alt',
+                            src: 'img src'
+                        }
+                    },
+                    checklistPages : [
+                        {
+                            title : 'Test 1',
+                            slug : 'test1',
+                            blurb: 'this is a blurb for test 1',
+                            items : [
+                                {
+                                    completed: false,
+                                    title : 'Test Item 1',
+                                    type : 'check',
+                                    externalLink : 'http://www.google.com'
+                                },{
+                                    completed: false,
+                                    title : 'Test Item 2',
+                                    type : 'check',
+                                    externalLink : 'http://www.google.com'
+                                },{
+                                    completed: false,
+                                    title : 'Test Item 3',
+                                    type : 'check',
+                                    externalLink : 'http://www.google.com'
+                                }
+                            ]
+                        },{
+                            title : 'Test 2',
+                            slug : 'test2',
+                            blurb: 'this is a blurb for test 2',
+                            items : [
+                                {
+                                    completed: false,
+                                    title : 'Test Item 1',
+                                    type : 'check',
+                                    externalLink : 'http://www.google.com'
+                                },{
+                                    completed: false,
+                                    title : 'Test Item 2',
+                                    type : 'check',
+                                    externalLink : 'http://www.google.com'
+                                },{
+                                    completed: false,
+                                    title : 'Test Item 3',
+                                    type : 'check',
+                                    externalLink : 'http://www.google.com'
+                                }
+                            ]
+                        }
+                    ]
+        };
+    </script>
     <script src="/scripts/jquery-3.1.1.min.js"></script>
     <script src="/scripts/underscore-min.js"></script>
     <script src="/scripts/backbone-min.js"></script>
