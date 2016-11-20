@@ -1,6 +1,105 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
-    scope.dLab = scope.dLab || {};
+    scope.dLab = scope.dLab || {
+        getViewModel : function () {
+            return JSON.parse(scope.localStorage.getItem('viewModel'));
+        },
+        setViewModel : function (data) {
+            scope.localStorage.setItem('viewModel', JSON.stringify(data));
+        },
+        baseViewModel :{
+            nav : {
+                items: [
+                    {
+                        title: 'Home',
+                        url: '/'
+                    },{
+                        title: 'Profile',
+                        url: '/#'
+                    },{
+                        title: 'Help',
+                        url: '/#'
+                    },{
+                        title: 'Log Out',
+                        url: '/#'
+                    }
+                ]
+            },
+            home : {
+                blurb: 'site level summary / blurb can go here',
+                    landingIMG : {
+                    title: 'img title',
+                        alt: 'img alt',
+                        src: 'img src'
+                }
+            },
+            checklistPages : [
+                {
+                    title : 'Test 1',
+                    slug : 'test1',
+                    blurb: 'this is a blurb for test 1',
+                    items : [
+                        {
+                            completed: true,
+                            isRelevant : true,
+                            title : 'Test Item 1',
+                            type : 'check',
+                            linkText : 'This is a link',
+                            externalLink : 'http://www.google.com'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Test Item 2',
+                            type : 'check',
+                            linkText : 'This is a link',
+                            externalLink : 'http://www.google.com'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Test Item 3',
+                            type : 'check',
+                            linkText : 'This is a link',
+                            externalLink : 'http://www.google.com'
+                        }
+                    ]
+                },{
+                    title : 'Test 2',
+                    slug : 'test2',
+                    blurb: 'this is a blurb for test 2',
+                    items : [
+                        {
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Test Item 1',
+                            type : 'check',
+                            linkText : 'This is a link',
+                            externalLink : 'http://www.google.com'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Test Item 2',
+                            type : 'check',
+                            linkText : 'This is a link',
+                            externalLink : 'http://www.google.com'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Test Item 3',
+                            type : 'check',
+                            linkText : 'This is a link',
+                            externalLink : 'http://www.google.com'
+                        }
+                    ]
+                }
+            ]
+        }
+    };
+
+    if ( !scope.dLab.getViewModel() ) {
+        scope.dLab.setViewModel(scope.dLab.baseViewModel);
+    }
+    scope.dLab.viewModel = scope.dLab.getViewModel();
+    
 
     // What will render the menu
     var MenuView = Backbone.View.extend({
@@ -151,7 +250,9 @@
 
     });
 
-    scope.dLab.appView = scope.dLab.appView || new AppView({
+    // scope.baseViewModel = ;
+    scope.dLab.appView = scope.dLab.appView ||
+        new AppView({
             el: $('#AppEl'),
             model: new AppModel(scope.dLab.viewModel.home)
         });
