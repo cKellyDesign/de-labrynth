@@ -1,12 +1,21 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
-    scope.localStorage.clear();
+    // scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
         },
         setViewModel : function (data) {
             scope.localStorage.setItem('viewModel', JSON.stringify(data));
+        },
+        updateViewModel : function (pageSlug, newData) {
+            var rootModel = this.getViewModel();
+
+            var checklistPagesIndex = _.findIndex(rootModel.checklistPages, { slug : pageSlug });
+            rootModel.checklistPages[checklistPagesIndex] = newData;
+
+            this.setViewModel(rootModel);
+            return true;
         },
         baseViewModel :{
             nav : {
@@ -29,6 +38,7 @@
             home : {
                 title: 'Welcome to UW Husky Start!',
                 blurb: 'New to the university and not sure where to start? UW Husky Start helps you figure out everything you need to get a head start in the school year.',
+                slug: 'home',
                 landingIMG : {
                     title: 'img title',
                     alt: 'img alt',
@@ -68,30 +78,35 @@
                 },{
                     title : 'Housing',
                     slug : 'housing',
-                    blurb: 'Here is a checklist that assists you in finding somewhere to live when you go to college.',
-                    checklist_title : null,
+                    blurb: 'Need help with finding housing options? There are on-campus housing available for UW students, for those who don\'t want to live on-campus, there are several off-campus options available as well.',
+                    // checklist_title : [
+                    //     'Congrats, you are all set for housing this school year',
+                    //     'On-Campus Checklist',
+                    //     'Off-Campus Checklist'
+                    // ],
+                    checklist_title: null,
                     items : [
                         {
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 1',
+                            title : '',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : '',
+                            externalLink : ''
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 2',
+                            title : '',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : '',
+                            externalLink : ''
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 3',
+                            title : '',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : '',
+                            externalLink : ''
                         }
                     ]
                 },{
@@ -164,6 +179,78 @@
                             type : 'check',
                             linkText : 'Set up an appointment with a Career Center advisor',
                             externalLink : 'https://sdb.admin.uw.edu/students/uwnetid/register.asp'
+                        }
+                    ]
+                },{
+                    title : 'Health Services',
+                    slug : 'health',
+                    blurb: 'Hall Health Center is an comprehensive clinic that provides health care to University of Washington students, alumni, and faculty.',
+                    checklist_title : null,
+                    items : [
+                        {
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Make sure you have health insurance',
+                            type : 'check',
+                            linkText : 'Learn more about the Washington State Health Exchange',
+                            externalLink : 'https://www.washington.edu/ship/international-student-insurance-health-plan/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Find a Primary Doctor',
+                            type : 'check',
+                            linkText : 'Contact Hall Health for a Doctor',
+                            externalLink : 'http://depts.washington.edu/hhpccweb/contact-us/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Connect with a specialist for your needs',
+                            type : 'check',
+                            linkText : 'Contact Hall Health for a Specialist',
+                            externalLink : 'http://depts.washington.edu/hhpccweb/contact-us/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Connect with a mental health professional',
+                            type : 'check',
+                            linkText : 'Learn more about the Mental Health Clinic',
+                            externalLink : 'http://depts.washington.edu/hhpccweb/project/mental-health-clinic/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Help keep the campus and its students safe',
+                            type : 'check',
+                            linkText : 'Learn more about the SafeCampus initiative',
+                            externalLink : 'http://depts.washington.edu/safecamp/'
+                        }
+                    ]
+                },{
+                    title : 'Other',
+                    slug : 'other',
+                    blurb: 'Here is a checklist that assists you in finding somewhere to live when you go to college.',
+                    checklist_title : null,
+                    items : [
+                        {
+                            completed: false,
+                            isRelevant : true,
+                            title : '',
+                            type : 'check',
+                            linkText : '',
+                            externalLink : ''
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : '',
+                            type : 'check',
+                            linkText : '',
+                            externalLink : ''
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : '',
+                            type : 'check',
+                            linkText : '',
+                            externalLink : ''
                         }
                     ]
                 }
@@ -288,12 +375,36 @@
             this.render();
         },
 
-        render: function() { 
+        handleListItemClick : function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var $targetItem = $(e.target);
+            var $itemParent = $targetItem.parents('.checklist_page_item');
             
-        
+            var titleToMatch = $itemParent.data('title');
+            var itemModelIndex = _.findIndex(this.model.attributes.items, {title : titleToMatch});
+
+            this.model.attributes.items[itemModelIndex].completed = !this.model.attributes.items[itemModelIndex].completed;
+            this.render();
+            // console.log(scope.dLab.appView.model.attributes);
+            scope.dLab.updateViewModel(this.model.attributes.slug, this.model.attributes);
+        },
+
+        stopListeningToItems: function () {
+            $('.check_box_link').off('click');
+        },
+
+        startListeningToItems: function () {
+            $('.check_box_link').on('click', _.bind(this.handleListItemClick, this));
+        },
+
+        render: function() {
+            this.stopListeningToItems();
             this.renderTodo();
             this.renderComplete();
             this.renderDismissed();
+            this.startListeningToItems();
             return this;
         },
 
@@ -304,7 +415,7 @@
                     todoItems.push(item);
                 }
             });
-            console.log(todoItems);
+            // console.log(todoItems);
             $('#checklistContainer > ul', this.$el).html(this.checkListTemplate({ items : todoItems }));
         },
 
@@ -315,6 +426,13 @@
                     completeItems.push(item);
                 }
             });
+
+            if ( completeItems.length) {
+                $('.completed_items_title').removeClass('hide');
+            } else {
+                $('.completed_items_title').addClass('hide');
+            }
+            
             $('#completedItems > ul', this.$el).html(this.checkListTemplate({ items : completeItems }));
         },
 
@@ -330,16 +448,7 @@
 
     });
 
-    var ChecklistItemView = Backbone.View.extend({
-
-    });
-
-    var ChecklistItemModel = Backbone.View.extend({
-
-    });
-
     // Init App
-
     scope.dLab.appView = scope.dLab.appView ||
         new AppView({
             el: $('#AppEl'),

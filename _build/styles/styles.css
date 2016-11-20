@@ -40,6 +40,9 @@ body {
   padding: 0;
   margin: 0;
 }
+#home_page_panel_list li {
+  margin-bottom: 32px;
+}
 
 .panel_link {
   display: block;
@@ -80,6 +83,11 @@ body {
   background-color: #7cd322;
 }
 
+.checklistUL {
+  margin: 0;
+  padding: 0;
+}
+
 .checklist_page_item {
   display: block;
   position: relative;
@@ -89,15 +97,18 @@ body {
   display: block;
   position: relative;
   color: black;
-  padding-left: 21px;
+  padding-left: 30px;
 }
 .checklist_page_item .check_box_link .check_box_box {
   position: absolute;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   left: 0;
-  top: 1px;
-  border: 2px solid black;
+  top: 0px;
+  border: 2px solid #4a4a4a;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 .checklist_page_item .check_box_link .task_title {
   display: inline;
@@ -107,14 +118,21 @@ body {
 }
 .checklist_page_item .item_external_link {
   display: inline-block;
-  margin-left: 21px;
+  margin-left: 30px;
 }
 .checklist_page_item.isComplete .check_box_box {
   border-color: #7cd322;
   background-color: #7cd322;
 }
-.checklist_page_item.isComplete .task_title {
+.checklist_page_item.isComplete .task_title,
+.checklist_page_item.isComplete .item_external_link {
   color: #7cd322;
+}
+
+.completed_items_title {
+  color: white;
+  background-color: #7cd322;
+  padding: 8px 0 8px 8px;
 }
 
 /*# sourceMappingURL=styles.css.map */

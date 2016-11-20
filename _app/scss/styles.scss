@@ -4,6 +4,7 @@ body {
 // colors
 $lightGrey : #f0f0f0;
 $darkGrey : #999999;
+$darkestGrey: #4a4a4a;
 $green : #7cd322;
 
 #Header {
@@ -45,6 +46,10 @@ $green : #7cd322;
 #home_page_panel_list {
   list-style: none;
   padding: 0; margin: 0;
+
+  li {
+    margin-bottom: 32px;
+  }
 }
 
 .panel_link {
@@ -90,7 +95,10 @@ $green : #7cd322;
   }
 }
 
-
+.checklistUL {
+  margin: 0;
+  padding: 0;
+}
 #page_conditional_section {
   
 }
@@ -109,13 +117,17 @@ $green : #7cd322;
     display: block;
     position: relative;
     color: black;
-    padding-left: 21px;
+    padding-left: 30px;
     
     .check_box_box {
       position: absolute;
-      height: 15px; width: 15px;
-      left: 0; top: 1px;
-      border: 2px solid black;
+      height: 20px; width: 20px;
+      left: 0; top: 0px;
+      border: 2px solid $darkestGrey;
+
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
     }
     .task_title {
       display: inline;
@@ -128,7 +140,7 @@ $green : #7cd322;
 
   .item_external_link {
     display: inline-block;
-    margin-left: 21px;
+    margin-left: 30px;
   }
 
   &.isComplete {
@@ -137,13 +149,18 @@ $green : #7cd322;
       background-color: $green;
     }
 
-    .task_title {
+    .task_title,
+    .item_external_link {
       color: $green;
-      
     }
   }
 }
 
+.completed_items_title {
+  color: white;
+  background-color: $green;
+  padding: 8px 0 8px 8px;
+}
 #page_sidebar_section {
   
 }
