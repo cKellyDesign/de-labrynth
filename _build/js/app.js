@@ -93,7 +93,7 @@
                         }
                     ]
                 },{
-                    title : 'Registration and Orientation',
+                    title : 'Registration & Orientation',
                     slug : 'registration',
                     blurb: 'Registration is the process of becoming a student at The University of Washington. Registration allows you to get a student ID number, enroll in classes, and go to orientation. Orientation is a guided session by current students and faculty to provide you with an opportunity to meet with an academic adviser, register for classes, be introduced to UW online resources and services, meet new and current students, and learn how to get involved at the UW.',
                     items : [
@@ -171,20 +171,26 @@
             if ( !scope.dLab.viewModel.checklistPages || !scope.dLab.viewModel.checklistPages.length ) {
                 return false;
             }
-
             var self = this;
+            var $content = $('#Content');
+
+            $content.html('<h3 class="home_page_callout">Choose a category to learn more.</h3>');
+            $content.append('<ul id="home_page_panel_list"></ul>');
+            var $panel_list = $('#home_page_panel_list');
 
             $.each(scope.dLab.viewModel.checklistPages, function(i, panelData) {
-                var el = $('<div class="col-md-3"></div>');
+                var classStr = 'col-md-3';
+                if (i === 0 || i === 3) { // if first or fourth
+                    classStr = classStr + ' col-md-offset-1';
+                }
+                var el = $('<li class="' + classStr + '"></li>');
                 var pagePanel= new ChecklistPageLinkPanelView({
                     el: el,
                     model: new ChecklistPageLinkPanelModel(panelData)
                 });
-                $('#Content').append(el);
+                $panel_list.append(el);
             });
         },
-
-
 
         initChecklistPage: function (slug) {
             // Determine and Update Page Level Model
@@ -221,6 +227,7 @@
 
         initialize : function() {
             this.render();
+            
         },
         
         render: function() {

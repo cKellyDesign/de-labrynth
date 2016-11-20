@@ -29,18 +29,20 @@
         </main>
     </script>
 
-    <!-- Home Page Template-->
+    <!-- Home Page Panel Template-->
     <script type="text/html" id="ChecklistPageLinkPanel" class="hide">
-        <div class="checklist_page_link_panel">
-            <a href="/list/<%= slug %>">
-                <h3 class="panel-title"><%= title %></h3>
-            </a>
-            <div class="panel-progress">
-            <% _.each(items, function(item){ %>
-                <div class="panelProgressBox<%= (item.completed ? ' isComplete' : '') %>"></div>
-            <% }); %>
+        <a class="panel_link" href="/list/<%= slug %>">
+            <div class="checklist_page_link_panel">
+
+                <h3 class="panel_title"><%= title %></h3>
+                <div class="panel_progress">
+                <% _.each(items, function(item){ %>
+                    <div class="panel_progress_box<%= (item.completed ? ' isComplete' : '') %>"></div>
+                <% }); %>
+                </div>
+
             </div>
-        </div>
+        </a>
     </script>
 
     <script type="text/html" id="ChecklistPageContainer" class="hide"></script>

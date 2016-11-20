@@ -24,4 +24,60 @@ body {
   height: 100%;
 }
 
+#Content {
+  padding-top: 24px;
+}
+
+.home_page_callout {
+  text-align: center;
+  margin: 0 0 24px 0;
+  padding: 0;
+  display: block;
+}
+
+#home_page_panel_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.panel_link {
+  display: block;
+  position: relative;
+  border: 1px solid black;
+}
+.panel_link .checklist_page_link_panel {
+  display: block;
+  padding: 24px 0;
+}
+.panel_link .checklist_page_link_panel .panel_title {
+  display: block;
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  margin: 0 0 18px 0;
+  padding: 0;
+  line-height: 1;
+}
+.panel_link .checklist_page_link_panel .panel_progress {
+  display: block;
+  text-align: center;
+}
+.panel_link .checklist_page_link_panel .panel_progress .panel_progress_box {
+  display: inline-block;
+  line-height: 0;
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.panel_link .checklist_page_link_panel .panel_progress .panel_progress_box.isComplete {
+  border-color: #7cd322;
+  background-color: #7cd322;
+}
+.panel_link:hover {
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=styles.css.map */
