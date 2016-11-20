@@ -25,34 +25,39 @@
 
 <!-- Checklist Page Checklist Container -->
 <script type="text/html" id="ChecklistPageContainer" class="hide">
-    <section class="checklistContainer">
-        <h3 class="checklistPageSectionHeader"></h3>
+    <section id="checklistContainer">
+        <h3 class="checklistPageSectionHeader">To Do</h3>
+        <ul class="checklistUL"></ul>
     </section>
-    <section class="completedItems">
-        <h3 class="checklistPageSectionHeader"></h3>
+    <section id="completedItems">
+        <h3 class="checklistPageSectionHeader">Completed</h3>
+        <ul class="checklistUL"></ul>
     </section>
-    <section class="notRelevantItems">
-        <h3 class="checklistPageSectionHeader"></h3>
+    <section id="notRelevantItems">
+        <h3 class="checklistPageSectionHeader">Dismissed</h3>
+        <ul class="checklistUL"></ul>
     </section>
 </script>
 
 <script type="text/html" id="ChecklistPageLinkPanel"></script>
 
 <!-- Checklist Page Checklist Item -->
-<script type="text/html" id="ChecklistPageItem">
-    <div class="checklistPageItem <%= type =><%= (completed ? ' isComplete' : '') %><%= (isRelevant ? '' : ' notRelevant') %>">
+<script type="text/html" id="ChecklistPageItems">
+    <% _.each(items, function (item) { %>
+    <div class="checklistPageItem <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>">
 
-        <% if (type === 'check') { %>
+        <% if (item.type === 'check') { %>
         <div class="checkBox">
-            <h4 class="taskTitle"><%= title =></h4>
+            <h4 class="taskTitle"><%= item.title %></h4>
         </div>
         <a href="" target="_blank"></a>
         <span class="doesNotApplyBtn"></span>
         <% } else { %>
-        <div class="sectionHeader"><%= title %></div>
+        <div class="sectionHeader"><%= item.title %></div>
         <% } %>
 
     </div>
+    <% }); %>
 </script>
 
 

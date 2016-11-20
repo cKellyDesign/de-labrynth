@@ -14,6 +14,7 @@
         template: _.template($('#AppTemplate').html()),
         isHome: $('body').hasClass('home'),
         isChecklist: $('body').hasClass('checklist'),
+        pageSlug: undefined,
 
         initialize: function () {
             console.log(this.model.attributes);
@@ -22,7 +23,8 @@
             if ( this.isHome ) {
                 this.initChecklistPanelPages();
             } else {
-                this.initChecklistPage();
+                this.getPageSlug();
+                this.initChecklistPage(this.pageSlug);
             }
 
         },
@@ -46,8 +48,22 @@
             });
         },
 
-        initChecklistPage: function () {
-            console.log('CHECK LIST PAGE');
+        getPageSlug: function () {
+            var pathName = scope.location.pathname;
+            this.pageSlug = pathName.replace('/list/', '');
+        },
+
+        initChecklistPage: function (slug) {
+            var modelFromSlug = _.findWhere(scope.dLab.viewModel.checklistPages,{ slug : slug });
+            if ( modelFromSlug === undefined) {
+                return false;
+            }
+
+            scope.dLab.checkListPage = new CheckListPageView({
+                el : $('#Content'),
+                // viewModel: modelFromSlug,
+                model: new CheckListPageModel(modelFromSlug)
+            });
         },
 
         render: function () {
@@ -73,8 +89,57 @@
     });
 
 
-    
+    var CheckListPageModel = Backbone.Model.extend();
     var CheckListPageView = Backbone.View.extend({
+        
+        pageTemplate: _.template($('#ChecklistPageContainer').html()),
+        checkListTemplate:  _.template($('#ChecklistPageItems').html()),
+
+        initialize : function() {
+            console.log('Checklist page init');
+            this.$el.html(this.pageTemplate(this.model.attributes));
+            this.render();
+        },
+
+        render: function() { 
+            
+        
+            this.renderTodo();
+            this.renderComplete();
+            this.renderDismissed();
+            return this;
+        },
+
+        renderTodo: function () {
+            var todoItems = [];
+            $.each(this.model.attributes.items, function (i, item) {
+                if ( !item.completed && item.isRelevant) {
+                    todoItems.push(item);
+                }
+            });
+            console.log(todoItems);
+            $('#checklistContainer > ul', this.$el).html(this.checkListTemplate({ items : todoItems }));
+        },
+
+        renderComplete: function () {
+            var completeItems = [];
+            $.each(this.model.attributes.items, function (i, item) {
+                if ( item.completed && item.isRelevant) {
+                    completeItems.push(item);
+                }
+            });
+            $('#completedItems > ul', this.$el).html(this.checkListTemplate({ items : completeItems }));
+        },
+
+        renderDismissed: function () {
+            var dismissedItems = [];
+            $.each(this.model.attributes.items, function (i, item) {
+                if ( !item.isRelevant) {
+                    dismissedItems.push(item);
+                }
+            });
+            $('#notRelevantItems > ul', this.$el).html(this.checkListTemplate({ items : dismissedItems }));
+        }
 
     });
 
@@ -86,6 +151,9 @@
 
     });
 
-    scope.dLab.appView = scope.dLab.appView || new AppView({ el: $('#AppEl'), model: new AppModel(scope.dLab.viewModel.home) });
+    scope.dLab.appView = scope.dLab.appView || new AppView({
+            el: $('#AppEl'),
+            model: new AppModel(scope.dLab.viewModel.home)
+        });
 
 })(window, jQuery, _, Backbone);
