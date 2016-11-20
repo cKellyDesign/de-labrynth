@@ -8,6 +8,7 @@
 <body>
     <div id="AppEl"></div>
 
+    <!-- Root Template -->
     <script type="text/html" id="AppTemplate" class="hide">
         <nav id="Nav"></nav>
         <header id="Header" class="container">
@@ -22,13 +23,51 @@
         </main>
     </script>
 
+    <!-- Home Page Panel Template-->
     <script type="text/html" id="ChecklistPageLinkPanel" class="hide">
         <div class="checklist_page_link_panel">
             <a href="/">
                 <h3 class="panel-title"><%= title %></h3>
             </a>
+            <div class="panel-progress">
+            <% _.each(items, function(item){ %>
+                <div class="panelProgressBox<%= (item.completed ? ' isComplete' : '') %>"></div>
+            <% }); %>
+            </div>
         </div>
     </script>
+
+    <!-- Checklist Page Checklist Container -->
+    <script type="text/html" id="ChecklistPageContainer" class="hide">
+        <section class="checklistContainer">
+            <h3 class="checklistPageSectionHeader"></h3>
+        </section>
+        <section class="completedItems">
+            <h3 class="checklistPageSectionHeader"></h3>
+        </section>
+        <section class="notRelevantItems">
+            <h3 class="checklistPageSectionHeader"></h3>
+        </section>
+    </script>
+
+    <!-- Checklist Page Checklist Item -->
+    <script type="text/html" id="ChecklistPageItem">
+        <div class="checklistPageItem <%= type =><%= (completed ? ' isComplete' : '') %><%= (isRelevant ? '' : ' notRelevant') %>">
+
+            <% if (type === 'check') { %>
+            <div class="checkBox">
+                <h4 class="taskTitle"><%= title =></h4>
+            </div>
+            <a href="" target="_blank"></a>
+            <span class="doesNotApplyBtn"></span>
+            <% } else { %>
+            <div class="sectionHeader"><%= title %></div>
+            <% } %>
+
+        </div>
+    </script>
+
+
     <script>
         window.dLab = window.dLab || {};
         window.dLab.viewModel = window.dLab.viewModel || {
@@ -64,19 +103,25 @@
                             blurb: 'this is a blurb for test 1',
                             items : [
                                 {
-                                    completed: false,
+                                    completed: true,
+                                    isRelevant : true,
                                     title : 'Test Item 1',
                                     type : 'check',
+                                    linkText : 'This is a link',
                                     externalLink : 'http://www.google.com'
                                 },{
                                     completed: false,
+                                    isRelevant : true,
                                     title : 'Test Item 2',
                                     type : 'check',
+                                    linkText : 'This is a link',
                                     externalLink : 'http://www.google.com'
                                 },{
                                     completed: false,
+                                    isRelevant : true,
                                     title : 'Test Item 3',
                                     type : 'check',
+                                    linkText : 'This is a link',
                                     externalLink : 'http://www.google.com'
                                 }
                             ]
@@ -87,18 +132,24 @@
                             items : [
                                 {
                                     completed: false,
+                                    isRelevant : true,
                                     title : 'Test Item 1',
                                     type : 'check',
+                                    linkText : 'This is a link',
                                     externalLink : 'http://www.google.com'
                                 },{
                                     completed: false,
+                                    isRelevant : true,
                                     title : 'Test Item 2',
                                     type : 'check',
+                                    linkText : 'This is a link',
                                     externalLink : 'http://www.google.com'
                                 },{
                                     completed: false,
+                                    isRelevant : true,
                                     title : 'Test Item 3',
                                     type : 'check',
+                                    linkText : 'This is a link',
                                     externalLink : 'http://www.google.com'
                                 }
                             ]
