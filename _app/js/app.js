@@ -7,16 +7,27 @@
 
     });
 
-    // Page Level App View
+    // Root App View
     var AppModel = Backbone.Model.extend();
     var AppView = Backbone.View.extend({
+
         template: _.template($('#AppTemplate').html()),
+        isHome: $('body').hasClass('home'),
+        isChecklist: $('body').hasClass('checklist'),
 
         initialize: function () {
             console.log(this.model.attributes);
             this.render();
-            this.initChecklistPanelPages();
+
+            if ( this.isHome ) {
+                this.initChecklistPanelPages();
+            } else {
+                this.initChecklistPage();
+            }
+
         },
+
+
 
         initChecklistPanelPages: function() {
             if ( !scope.dLab.viewModel.checklistPages || !scope.dLab.viewModel.checklistPages.length ) {
@@ -33,6 +44,9 @@
                 });
                 $('#Content').append(el);
             });
+        },
+
+        initChecklistPage: function () {
         },
 
         render: function () {
