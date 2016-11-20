@@ -2,4 +2,26 @@ body {
   background-color: white;
 }
 
+#Header {
+  background-color: #999999;
+  text-align: center;
+  color: white;
+}
+#Header .headerContainer {
+  padding: 18px 0;
+}
+
+#TopBar {
+  background-color: #f0f0f0;
+  padding: 12px 0;
+}
+#TopBar .logoLink {
+  max-height: 36px;
+  display: block;
+  text-align: left;
+}
+#TopBar .logoLink img {
+  height: 100%;
+}
+
 /*# sourceMappingURL=styles.css.map */

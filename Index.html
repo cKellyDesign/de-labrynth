@@ -11,12 +11,18 @@
     <!-- Root Template -->
     <script type="text/html" id="AppTemplate" class="hide">
         <nav id="Nav"></nav>
-        <header id="Header" class="container">
-            <a href="/">
-                <img id="Logo" src="">
-            </a>
-            <h2>Husky Starter Kit</h2>
-            <p id="PageDescEl"><%= blurb %></p>
+        <header id="Header" >
+            <div id="TopBar">
+                <div class="topBarContainer container">
+                    <a class="logoLink" href="/">
+                    <img id="Logo" src="/images/sitewideLogo.jpg">
+                    </a>
+                </div>
+            </div>
+            <div class="headerContainer container">
+                <h2><%= title %></h2>
+                <p id="PageDescEl" class="col-md-6 col-md-offset-3"><%= blurb %></p>
+            </div>
         </header>
         <main id="Content" class="container">
             <!-- Checklist Page Link Panels Render Here -->
@@ -26,7 +32,7 @@
     <!-- Home Page Template-->
     <script type="text/html" id="ChecklistPageLinkPanel" class="hide">
         <div class="checklist_page_link_panel">
-            <a href="/">
+            <a href="/list/<%= slug %>">
                 <h3 class="panel-title"><%= title %></h3>
             </a>
             <div class="panel-progress">

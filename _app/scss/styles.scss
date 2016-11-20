@@ -1,3 +1,32 @@
 body {
   background-color: white;
 }
+// colors
+$lightGrey : #f0f0f0;
+$darkGrey : #999999;
+
+#Header {
+  background-color: $darkGrey;
+  text-align: center;
+  color: white;
+
+  .headerContainer {
+    padding: 18px 0;
+  }
+}
+
+#TopBar {
+  background-color: $lightGrey;
+  padding: 12px 0;
+
+  .logoLink {
+    max-height: 36px;
+    display: block;
+    text-align: left;
+    
+    img {
+      height: 100%;
+    }
+  }
+}
+

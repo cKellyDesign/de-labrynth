@@ -1,5 +1,6 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
+    scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
@@ -26,21 +27,50 @@
                 ]
             },
             home : {
-                blurb: 'site level summary / blurb can go here',
-                    landingIMG : {
+                title: 'Welcome to UW Husky Start!',
+                blurb: 'New to the university and not sure where to start? UW Husky Start helps you figure out everything you need to get a head start in the school year.',
+                landingIMG : {
                     title: 'img title',
-                        alt: 'img alt',
-                        src: 'img src'
+                    alt: 'img alt',
+                    src: 'img src'
                 }
             },
             checklistPages : [
                 {
-                    title : 'Test 1',
-                    slug : 'test1',
-                    blurb: 'this is a blurb for test 1',
+                    title : 'Financial Aid',
+                    slug : 'fin-aid',
+                    blurb: 'Financial Aid is any grant or loan offered to help a student meet his/her college expenses. Such aid is usually provided by various sources such as federal and state agencies, colleges, and foundations.',
                     items : [
                         {
                             completed: true,
+                            isRelevant : true,
+                            title : 'FAFSA',
+                            type : 'check',
+                            linkText : 'FAFSA Homepage',
+                            externalLink : 'https://fafsa.ed.gov/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'FAFSA Status',
+                            type : 'check',
+                            linkText : 'Check your FASFA status',
+                            externalLink : 'https://sdb.admin.uw.edu/sisStudents/uwnetid/finaidstatus.aspx'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Financial Aid Award Letter',
+                            type : 'check',
+                            linkText : 'Review your Financial Aid Award Letter',
+                            externalLink : 'https://sdb.admin.uw.edu/sisStudents/uwnetid/finaidstatus.aspx'
+                        }
+                    ]
+                },{
+                    title : 'Housing',
+                    slug : 'housing',
+                    blurb: 'Here is a checklist that assists you in finding somewhere to live when you go to college.',
+                    items : [
+                        {
+                            completed: false,
                             isRelevant : true,
                             title : 'Test Item 1',
                             type : 'check',
@@ -63,31 +93,38 @@
                         }
                     ]
                 },{
-                    title : 'Test 2',
-                    slug : 'test2',
-                    blurb: 'this is a blurb for test 2',
+                    title : 'Registration and Orientation',
+                    slug : 'registration',
+                    blurb: 'Registration is the process of becoming a student at The University of Washington. Registration allows you to get a student ID number, enroll in classes, and go to orientation. Orientation is a guided session by current students and faculty to provide you with an opportunity to meet with an academic adviser, register for classes, be introduced to UW online resources and services, meet new and current students, and learn how to get involved at the UW.',
                     items : [
                         {
-                            completed: false,
+                            completed: true,
                             isRelevant : true,
-                            title : 'Test Item 1',
+                            title : 'Husky Card',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : 'Get your Husky Card today!',
+                            externalLink : 'https://www.hfs.washington.edu/huskycard/#gsc.tab=0'
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 2',
+                            title : 'Dawg Daze',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : 'Going to Dog Daze? Find out more!',
+                            externalLink : 'http://www.uwdawgdaze.com/'
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 3',
+                            title : 'F.I.G.',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : 'Sign up for your First Year Interest Group',
+                            externalLink : 'https://fyp.washington.edu/first-year-interest-groups/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Registration',
+                            type : 'check',
+                            linkText : 'Register for your classes',
+                            externalLink : 'https://sdb.admin.uw.edu/students/uwnetid/register.asp'
                         }
                     ]
                 }
@@ -120,7 +157,7 @@
             this.render();
 
             if ( this.isHome ) {
-                this.initChecklistPanelPages();
+                this.initHomePage();
             } else {
                 this.getPageSlug();
                 this.initChecklistPage(this.pageSlug);
@@ -130,7 +167,7 @@
 
 
 
-        initChecklistPanelPages: function() {
+        initHomePage: function() {
             if ( !scope.dLab.viewModel.checklistPages || !scope.dLab.viewModel.checklistPages.length ) {
                 return false;
             }
@@ -147,22 +184,27 @@
             });
         },
 
-        getPageSlug: function () {
-            var pathName = scope.location.pathname;
-            this.pageSlug = pathName.replace('/list/', '');
-        },
+
 
         initChecklistPage: function (slug) {
+            // Determine and Update Page Level Model
             var modelFromSlug = _.findWhere(scope.dLab.viewModel.checklistPages,{ slug : slug });
             if ( modelFromSlug === undefined) {
                 return false;
             }
+            this.model.set(modelFromSlug);
+            this.render();
 
+            // Init Page Specific List View
             scope.dLab.checkListPage = new CheckListPageView({
                 el : $('#Content'),
-                // viewModel: modelFromSlug,
                 model: new CheckListPageModel(modelFromSlug)
             });
+        },
+
+        getPageSlug: function () {
+            var pathName = scope.location.pathname;
+            this.pageSlug = pathName.replace('/list/', '');
         },
 
         render: function () {
@@ -250,11 +292,12 @@
 
     });
 
-    // scope.baseViewModel = ;
+    // Init App
+
     scope.dLab.appView = scope.dLab.appView ||
         new AppView({
             el: $('#AppEl'),
-            model: new AppModel(scope.dLab.viewModel.home)
+            model: new AppModel( scope.dLab.viewModel.home )
         });
 
 })(window, jQuery, _, Backbone);
