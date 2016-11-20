@@ -31,18 +31,24 @@
 
 <!-- Checklist Page Checklist Container -->
 <script type="text/html" id="ChecklistPageContainer" class="hide">
-    <section id="checklistContainer">
-        <h3 class="checklistPageSectionHeader">To Do</h3>
-        <ul class="checklistUL"></ul>
+    <section id="page_conditional_section"></section>
+    <section id="page_checklist_containers">
+        <% if (checklist_title) { %><h2 class="checklist_title"><%= checklist_title %></h2><% } %>
+        <div id="checklistContainer">
+
+            <!--<h3 class="checklistPageSectionHeader">To Do</h3>-->
+            <ul class="checklistUL"></ul>
+        </div>
+        <div id="completedItems">
+            <!--<h3 class="checklistPageSectionHeader">Completed</h3>-->
+            <ul class="checklistUL"></ul>
+        </div>
+        <div id="notRelevantItems">
+            <!--<h3 class="checklistPageSectionHeader">Dismissed</h3>-->
+            <ul class="checklistUL"></ul>
+        </div>
     </section>
-    <section id="completedItems">
-        <h3 class="checklistPageSectionHeader">Completed</h3>
-        <ul class="checklistUL"></ul>
-    </section>
-    <section id="notRelevantItems">
-        <h3 class="checklistPageSectionHeader">Dismissed</h3>
-        <ul class="checklistUL"></ul>
-    </section>
+    <section id="page_sidebar_section"></section>
 </script>
 
 <script type="text/html" id="ChecklistPageLinkPanel"></script>
@@ -56,7 +62,7 @@
         <div class="checkBox">
             <h4 class="taskTitle"><%= item.title %></h4>
         </div>
-        <a href="" target="_blank"></a>
+        <a href="<%= item.externalLink %>" target="_blank"><%= item.linkText %></a>
         <span class="doesNotApplyBtn"></span>
         <% } else { %>
         <div class="sectionHeader"><%= item.title %></div>

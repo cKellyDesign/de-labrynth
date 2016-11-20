@@ -52,6 +52,10 @@ $green : #7cd322;
   position: relative;
   border: 1px solid black;
 
+  &:hover {
+    text-decoration: none;
+  }
+
 .checklist_page_link_panel {
   display: block;
   padding: 24px 0;
@@ -85,8 +89,6 @@ $green : #7cd322;
     }
   }
 
-  &:hover {
-    text-decoration: none;
-  }
+
 }
 

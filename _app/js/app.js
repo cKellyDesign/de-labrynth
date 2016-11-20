@@ -40,6 +40,7 @@
                     title : 'Financial Aid',
                     slug : 'fin-aid',
                     blurb: 'Financial Aid is any grant or loan offered to help a student meet his/her college expenses. Such aid is usually provided by various sources such as federal and state agencies, colleges, and foundations.',
+                    checklist_title : null,
                     items : [
                         {
                             completed: true,
@@ -68,6 +69,7 @@
                     title : 'Housing',
                     slug : 'housing',
                     blurb: 'Here is a checklist that assists you in finding somewhere to live when you go to college.',
+                    checklist_title : null,
                     items : [
                         {
                             completed: false,
@@ -96,6 +98,7 @@
                     title : 'Registration & Orientation',
                     slug : 'registration',
                     blurb: 'Registration is the process of becoming a student at The University of Washington. Registration allows you to get a student ID number, enroll in classes, and go to orientation. Orientation is a guided session by current students and faculty to provide you with an opportunity to meet with an academic adviser, register for classes, be introduced to UW online resources and services, meet new and current students, and learn how to get involved at the UW.',
+                    checklist_title : null,
                     items : [
                         {
                             completed: true,
@@ -124,6 +127,42 @@
                             title : 'Registration',
                             type : 'check',
                             linkText : 'Register for your classes',
+                            externalLink : 'https://sdb.admin.uw.edu/students/uwnetid/register.asp'
+                        }
+                    ]
+                },{
+                    title : 'Academic Advising',
+                    slug : 'advising',
+                    blurb: 'Academic Advisers help students understand the UW\'s academic systems, choose a major, and discover campus resources. The career and Internship Center helps students with resumes, internships, job searching, and interviewing.',
+                    checklist_title: 'My Academic Checklist',
+                    items : [
+                        {
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Review what advising options are available to me',
+                            type : 'check',
+                            linkText : 'Checkout the advising website',
+                            externalLink : 'https://www.washington.edu/uaa/advising/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Talk to an advisor to get help',
+                            type : 'check',
+                            linkText : 'Set up appointment with adviser for the best way to receive advice.',
+                            externalLink : 'https://www.washington.edu/uaa/advising/appointments/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Review what kind of help I can get from the Career Center',
+                            type : 'check',
+                            linkText : 'Investigate their services',
+                            externalLink : 'https://careers.uw.edu/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Talk to an advisor about my future career',
+                            type : 'check',
+                            linkText : 'Set up an appointment with a Career Center advisor',
                             externalLink : 'https://sdb.admin.uw.edu/students/uwnetid/register.asp'
                         }
                     ]

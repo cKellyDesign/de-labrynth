@@ -46,6 +46,9 @@ body {
   position: relative;
   border: 1px solid black;
 }
+.panel_link:hover {
+  text-decoration: none;
+}
 .panel_link .checklist_page_link_panel {
   display: block;
   padding: 24px 0;
@@ -75,9 +78,6 @@ body {
 .panel_link .checklist_page_link_panel .panel_progress .panel_progress_box.isComplete {
   border-color: #7cd322;
   background-color: #7cd322;
-}
-.panel_link:hover {
-  text-decoration: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
