@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>Enter the Labyrinth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/styles/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/styles/styles.css" rel="stylesheet"/>
+</head>
+<body class="checklist">
+<div id="AppEl"></div>
+
+<!-- Root Template -->
+<script type="text/html" id="AppTemplate" class="hide">
+    <nav id="Nav"></nav>
+    <header id="Header" class="container">
+        <a href="/">
+            <img id="Logo" src="">
+        </a>
+        <h2>Husky Starter Kit</h2>
+        <p id="PageDescEl"><%= blurb %></p>
+    </header>
+    <main id="Content" class="container">
+        <!-- Checklist Page Link Panels Render Here -->
+    </main>
+</script>
+
+<!-- Checklist Page Checklist Container -->
+<script type="text/html" id="ChecklistPageContainer" class="hide">
+    <section id="checklistContainer">
+        <h3 class="checklistPageSectionHeader">To Do</h3>
+        <ul class="checklistUL"></ul>
+    </section>
+    <section id="completedItems">
+        <h3 class="checklistPageSectionHeader">Completed</h3>
+        <ul class="checklistUL"></ul>
+    </section>
+    <section id="notRelevantItems">
+        <h3 class="checklistPageSectionHeader">Dismissed</h3>
+        <ul class="checklistUL"></ul>
+    </section>
+</script>
+
+<script type="text/html" id="ChecklistPageLinkPanel"></script>
+
+<!-- Checklist Page Checklist Item -->
+<script type="text/html" id="ChecklistPageItems">
+    <% _.each(items, function (item) { %>
+    <div class="checklistPageItem <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>">
+
+        <% if (item.type === 'check') { %>
+        <div class="checkBox">
+            <h4 class="taskTitle"><%= item.title %></h4>
+        </div>
+        <a href="" target="_blank"></a>
+        <span class="doesNotApplyBtn"></span>
+        <% } else { %>
+        <div class="sectionHeader"><%= item.title %></div>
+        <% } %>
+
+    </div>
+    <% }); %>
+</script>
+
+
+<script src="/scripts/jquery-3.1.1.min.js"></script>
+<script src="/scripts/underscore-min.js"></script>
+<script src="/scripts/backbone-min.js"></script>
+<script src="/scripts/app.js"></script>
+</body>
+</html>

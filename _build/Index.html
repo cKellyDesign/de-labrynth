@@ -5,7 +5,7 @@
     <link href="/styles/bootstrap.min.css" rel="stylesheet"/>
     <link href="/styles/styles.css" rel="stylesheet"/>
 </head>
-<body>
+<body class="home">
     <div id="AppEl"></div>
 
     <!-- Root Template -->
@@ -23,7 +23,7 @@
         </main>
     </script>
 
-    <!-- Home Page Panel Template-->
+    <!-- Home Page Template-->
     <script type="text/html" id="ChecklistPageLinkPanel" class="hide">
         <div class="checklist_page_link_panel">
             <a href="/">
@@ -37,126 +37,10 @@
         </div>
     </script>
 
-    <!-- Checklist Page Checklist Container -->
-    <script type="text/html" id="ChecklistPageContainer" class="hide">
-        <section class="checklistContainer">
-            <h3 class="checklistPageSectionHeader"></h3>
-        </section>
-        <section class="completedItems">
-            <h3 class="checklistPageSectionHeader"></h3>
-        </section>
-        <section class="notRelevantItems">
-            <h3 class="checklistPageSectionHeader"></h3>
-        </section>
-    </script>
+    <script type="text/html" id="ChecklistPageContainer" class="hide"></script>
+    <script type="text/html" id="ChecklistPageItems"></script>
 
-    <!-- Checklist Page Checklist Item -->
-    <script type="text/html" id="ChecklistPageItem">
-        <div class="checklistPageItem <%= type =><%= (completed ? ' isComplete' : '') %><%= (isRelevant ? '' : ' notRelevant') %>">
-
-            <% if (type === 'check') { %>
-            <div class="checkBox">
-                <h4 class="taskTitle"><%= title =></h4>
-            </div>
-            <a href="" target="_blank"></a>
-            <span class="doesNotApplyBtn"></span>
-            <% } else { %>
-            <div class="sectionHeader"><%= title %></div>
-            <% } %>
-
-        </div>
-    </script>
-
-
-    <script>
-        window.dLab = window.dLab || {};
-        window.dLab.viewModel = window.dLab.viewModel || {
-                    nav : {
-                        items: [
-                            {
-                                title: 'Home',
-                                url: '/'
-                            },{
-                                title: 'Profile',
-                                url: '/#'
-                            },{
-                                title: 'Help',
-                                url: '/#'
-                            },{
-                                title: 'Log Out',
-                                url: '/#'
-                            }
-                        ]
-                    },
-                    home : {
-                        blurb: 'site level summary / blurb can go here',
-                        landingIMG : {
-                            title: 'img title',
-                            alt: 'img alt',
-                            src: 'img src'
-                        }
-                    },
-                    checklistPages : [
-                        {
-                            title : 'Test 1',
-                            slug : 'test1',
-                            blurb: 'this is a blurb for test 1',
-                            items : [
-                                {
-                                    completed: true,
-                                    isRelevant : true,
-                                    title : 'Test Item 1',
-                                    type : 'check',
-                                    linkText : 'This is a link',
-                                    externalLink : 'http://www.google.com'
-                                },{
-                                    completed: false,
-                                    isRelevant : true,
-                                    title : 'Test Item 2',
-                                    type : 'check',
-                                    linkText : 'This is a link',
-                                    externalLink : 'http://www.google.com'
-                                },{
-                                    completed: false,
-                                    isRelevant : true,
-                                    title : 'Test Item 3',
-                                    type : 'check',
-                                    linkText : 'This is a link',
-                                    externalLink : 'http://www.google.com'
-                                }
-                            ]
-                        },{
-                            title : 'Test 2',
-                            slug : 'test2',
-                            blurb: 'this is a blurb for test 2',
-                            items : [
-                                {
-                                    completed: false,
-                                    isRelevant : true,
-                                    title : 'Test Item 1',
-                                    type : 'check',
-                                    linkText : 'This is a link',
-                                    externalLink : 'http://www.google.com'
-                                },{
-                                    completed: false,
-                                    isRelevant : true,
-                                    title : 'Test Item 2',
-                                    type : 'check',
-                                    linkText : 'This is a link',
-                                    externalLink : 'http://www.google.com'
-                                },{
-                                    completed: false,
-                                    isRelevant : true,
-                                    title : 'Test Item 3',
-                                    type : 'check',
-                                    linkText : 'This is a link',
-                                    externalLink : 'http://www.google.com'
-                                }
-                            ]
-                        }
-                    ]
-        };
-    </script>
+    
     <script src="/scripts/jquery-3.1.1.min.js"></script>
     <script src="/scripts/underscore-min.js"></script>
     <script src="/scripts/backbone-min.js"></script>

@@ -8,8 +8,16 @@ app.set('port', 8080);
 app.set('case sensitive routing', false);
 
 app.get('/', function(req, res) {
-
     res.sendFile("Index.html", options, function (err) {
+        if (err) {
+            console.log(err);
+            res.send('Error - ', err.status);
+        }
+    });
+});
+
+app.get('/list/:slug', function(req, res) {
+    res.sendFile("checklistPage.html", options, function (err) {
         if (err) {
             console.log(err);
             res.send('Error - ', err.status);
