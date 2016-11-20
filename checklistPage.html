@@ -11,12 +11,18 @@
 <!-- Root Template -->
 <script type="text/html" id="AppTemplate" class="hide">
     <nav id="Nav"></nav>
-    <header id="Header" class="container">
-        <a href="/">
-            <img id="Logo" src="">
-        </a>
-        <h2>Husky Starter Kit</h2>
-        <p id="PageDescEl"><%= blurb %></p>
+    <header id="Header" >
+        <div id="TopBar">
+            <div class="topBarContainer container">
+                <a class="logoLink" href="/">
+                    <img id="Logo" src="/images/sitewideLogo.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="headerContainer container">
+            <h2><%= title %></h2>
+            <p id="PageDescEl" class="col-md-6 col-md-offset-3"><%= blurb %></p>
+        </div>
     </header>
     <main id="Content" class="container">
         <!-- Checklist Page Link Panels Render Here -->
@@ -25,18 +31,25 @@
 
 <!-- Checklist Page Checklist Container -->
 <script type="text/html" id="ChecklistPageContainer" class="hide">
-    <section id="checklistContainer">
-        <h3 class="checklistPageSectionHeader">To Do</h3>
-        <ul class="checklistUL"></ul>
+    <section id="page_conditional_section"></section>
+    <section id="page_checklist_containers" class="col-md-5 col-md-offset-1">
+        <% if (checklist_title) { %><h2 class="checklist_title"><%= checklist_title %></h2><% } %>
+        <div id="checklistContainer">
+
+            <!--<h3 class="checklistPageSectionHeader">To Do</h3>-->
+            <ul class="checklistUL"></ul>
+        </div>
+        <div id="completedItems">
+            <h5 class="hide completed_items_title">Completed</h5>
+            <!--<h3 class="checklistPageSectionHeader">Completed</h3>-->
+            <ul class="checklistUL"></ul>
+        </div>
+        <div id="notRelevantItems">
+            <!--<h3 class="checklistPageSectionHeader">Dismissed</h3>-->
+            <ul class="checklistUL"></ul>
+        </div>
     </section>
-    <section id="completedItems">
-        <h3 class="checklistPageSectionHeader">Completed</h3>
-        <ul class="checklistUL"></ul>
-    </section>
-    <section id="notRelevantItems">
-        <h3 class="checklistPageSectionHeader">Dismissed</h3>
-        <ul class="checklistUL"></ul>
-    </section>
+    <section id="page_sidebar_section"></section>
 </script>
 
 <script type="text/html" id="ChecklistPageLinkPanel"></script>
@@ -44,19 +57,21 @@
 <!-- Checklist Page Checklist Item -->
 <script type="text/html" id="ChecklistPageItems">
     <% _.each(items, function (item) { %>
-    <div class="checklistPageItem <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>">
+    <li class="checklist_page_item <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>" data-title="<%= item.title %>">
 
         <% if (item.type === 'check') { %>
-        <div class="checkBox">
-            <h4 class="taskTitle"><%= item.title %></h4>
-        </div>
-        <a href="" target="_blank"></a>
+        <a href="#" class="check_box_link">
+            <span class="check_box_box"></span>
+            <h4 class="task_title"><%= item.title %></h4>
+        </a>
+
+        <a class="item_external_link" href="<%= item.externalLink %>" target="_blank"><%= item.linkText %></a>
         <span class="doesNotApplyBtn"></span>
         <% } else { %>
         <div class="sectionHeader"><%= item.title %></div>
         <% } %>
 
-    </div>
+    </li>
     <% }); %>
 </script>
 

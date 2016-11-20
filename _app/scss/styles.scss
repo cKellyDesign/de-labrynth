@@ -1,3 +1,167 @@
 body {
   background-color: white;
 }
+// colors
+$lightGrey : #f0f0f0;
+$darkGrey : #999999;
+$darkestGrey: #4a4a4a;
+$green : #7cd322;
+
+#Header {
+  background-color: $darkGrey;
+  text-align: center;
+  color: white;
+
+  .headerContainer {
+    padding: 18px 0;
+  }
+}
+
+#TopBar {
+  background-color: $lightGrey;
+  padding: 12px 0;
+
+  .logoLink {
+    max-height: 36px;
+    display: block;
+    text-align: left;
+    
+    img {
+      height: 100%;
+    }
+  }
+}
+
+#Content {
+  padding-top: 24px;
+}
+
+
+.home_page_callout {
+  text-align: center;
+  margin: 0 0 24px 0; padding: 0;
+  display: block;
+}
+
+#home_page_panel_list {
+  list-style: none;
+  padding: 0; margin: 0;
+
+  li {
+    margin-bottom: 32px;
+  }
+}
+
+.panel_link {
+  display: block;
+  position: relative;
+  border: 1px solid black;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+.checklist_page_link_panel {
+  display: block;
+  padding: 24px 0;
+
+    .panel_title {
+      display: block;
+      position: relative;
+      text-align: center;
+      font-size: 18px;
+      color: black;
+      margin: 0 0 18px 0; padding: 0;
+      line-height: 1;
+    }
+
+    .panel_progress {
+      display: block;
+      text-align: center;;
+
+      .panel_progress_box {
+        display: inline-block;
+        line-height: 0;
+        height: 10px; width: 10px;
+        border-radius: 10px;
+        border: 1px solid black;
+
+        &.isComplete {
+          border-color: $green;
+          background-color: $green;
+        }
+      }
+    }
+  }
+}
+
+.checklistUL {
+  margin: 0;
+  padding: 0;
+}
+#page_conditional_section {
+  
+}
+
+#page_checklist_containers {
+  
+  
+}
+
+.checklist_page_item {
+  display: block;
+  position: relative;
+  margin-bottom: 18px;
+  
+  .check_box_link {
+    display: block;
+    position: relative;
+    color: black;
+    padding-left: 30px;
+    
+    .check_box_box {
+      position: absolute;
+      height: 20px; width: 20px;
+      left: 0; top: 0px;
+      border: 2px solid $darkestGrey;
+
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+    .task_title {
+      display: inline;
+    }
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .item_external_link {
+    display: inline-block;
+    margin-left: 30px;
+  }
+
+  &.isComplete {
+    .check_box_box {
+      border-color: $green;
+      background-color: $green;
+    }
+
+    .task_title,
+    .item_external_link {
+      color: $green;
+    }
+  }
+}
+
+.completed_items_title {
+  color: white;
+  background-color: $green;
+  padding: 8px 0 8px 8px;
+}
+#page_sidebar_section {
+  
+}
+

@@ -1,11 +1,21 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
+    // scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
         },
         setViewModel : function (data) {
             scope.localStorage.setItem('viewModel', JSON.stringify(data));
+        },
+        updateViewModel : function (pageSlug, newData) {
+            var rootModel = this.getViewModel();
+
+            var checklistPagesIndex = _.findIndex(rootModel.checklistPages, { slug : pageSlug });
+            rootModel.checklistPages[checklistPagesIndex] = newData;
+
+            this.setViewModel(rootModel);
+            return true;
         },
         baseViewModel :{
             nav : {
@@ -26,68 +36,221 @@
                 ]
             },
             home : {
-                blurb: 'site level summary / blurb can go here',
-                    landingIMG : {
+                title: 'Welcome to UW Husky Start!',
+                blurb: 'New to the university and not sure where to start? UW Husky Start helps you figure out everything you need to get a head start in the school year.',
+                slug: 'home',
+                landingIMG : {
                     title: 'img title',
-                        alt: 'img alt',
-                        src: 'img src'
+                    alt: 'img alt',
+                    src: 'img src'
                 }
             },
             checklistPages : [
                 {
-                    title : 'Test 1',
-                    slug : 'test1',
-                    blurb: 'this is a blurb for test 1',
+                    title : 'Financial Aid',
+                    slug : 'fin-aid',
+                    blurb: 'Financial Aid is any grant or loan offered to help a student meet his/her college expenses. Such aid is usually provided by various sources such as federal and state agencies, colleges, and foundations.',
+                    checklist_title : null,
                     items : [
                         {
                             completed: true,
                             isRelevant : true,
-                            title : 'Test Item 1',
+                            title : 'FAFSA',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : 'FAFSA Homepage',
+                            externalLink : 'https://fafsa.ed.gov/'
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 2',
+                            title : 'FAFSA Status',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : 'Check your FASFA status',
+                            externalLink : 'https://sdb.admin.uw.edu/sisStudents/uwnetid/finaidstatus.aspx'
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 3',
+                            title : 'Financial Aid Award Letter',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : 'Review your Financial Aid Award Letter',
+                            externalLink : 'https://sdb.admin.uw.edu/sisStudents/uwnetid/finaidstatus.aspx'
                         }
                     ]
                 },{
-                    title : 'Test 2',
-                    slug : 'test2',
-                    blurb: 'this is a blurb for test 2',
+                    title : 'Housing',
+                    slug : 'housing',
+                    blurb: 'Need help with finding housing options? There are on-campus housing available for UW students, for those who don\'t want to live on-campus, there are several off-campus options available as well.',
+                    // checklist_title : [
+                    //     'Congrats, you are all set for housing this school year',
+                    //     'On-Campus Checklist',
+                    //     'Off-Campus Checklist'
+                    // ],
+                    checklist_title: null,
                     items : [
                         {
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 1',
+                            title : '',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : '',
+                            externalLink : ''
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 2',
+                            title : '',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : '',
+                            externalLink : ''
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Test Item 3',
+                            title : '',
                             type : 'check',
-                            linkText : 'This is a link',
-                            externalLink : 'http://www.google.com'
+                            linkText : '',
+                            externalLink : ''
+                        }
+                    ]
+                },{
+                    title : 'Registration & Orientation',
+                    slug : 'registration',
+                    blurb: 'Registration is the process of becoming a student at The University of Washington. Registration allows you to get a student ID number, enroll in classes, and go to orientation. Orientation is a guided session by current students and faculty to provide you with an opportunity to meet with an academic adviser, register for classes, be introduced to UW online resources and services, meet new and current students, and learn how to get involved at the UW.',
+                    checklist_title : null,
+                    items : [
+                        {
+                            completed: true,
+                            isRelevant : true,
+                            title : 'Husky Card',
+                            type : 'check',
+                            linkText : 'Get your Husky Card today!',
+                            externalLink : 'https://www.hfs.washington.edu/huskycard/#gsc.tab=0'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Dawg Daze',
+                            type : 'check',
+                            linkText : 'Going to Dog Daze? Find out more!',
+                            externalLink : 'http://www.uwdawgdaze.com/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'F.I.G.',
+                            type : 'check',
+                            linkText : 'Sign up for your First Year Interest Group',
+                            externalLink : 'https://fyp.washington.edu/first-year-interest-groups/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Registration',
+                            type : 'check',
+                            linkText : 'Register for your classes',
+                            externalLink : 'https://sdb.admin.uw.edu/students/uwnetid/register.asp'
+                        }
+                    ]
+                },{
+                    title : 'Academic Advising',
+                    slug : 'advising',
+                    blurb: 'Academic Advisers help students understand the UW\'s academic systems, choose a major, and discover campus resources. The career and Internship Center helps students with resumes, internships, job searching, and interviewing.',
+                    checklist_title: 'My Academic Checklist',
+                    items : [
+                        {
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Review what advising options are available to me',
+                            type : 'check',
+                            linkText : 'Checkout the advising website',
+                            externalLink : 'https://www.washington.edu/uaa/advising/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Talk to an advisor to get help',
+                            type : 'check',
+                            linkText : 'Set up appointment with adviser for the best way to receive advice.',
+                            externalLink : 'https://www.washington.edu/uaa/advising/appointments/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Review what kind of help I can get from the Career Center',
+                            type : 'check',
+                            linkText : 'Investigate their services',
+                            externalLink : 'https://careers.uw.edu/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Talk to an advisor about my future career',
+                            type : 'check',
+                            linkText : 'Set up an appointment with a Career Center advisor',
+                            externalLink : 'https://sdb.admin.uw.edu/students/uwnetid/register.asp'
+                        }
+                    ]
+                },{
+                    title : 'Health Services',
+                    slug : 'health',
+                    blurb: 'Hall Health Center is an comprehensive clinic that provides health care to University of Washington students, alumni, and faculty.',
+                    checklist_title : null,
+                    items : [
+                        {
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Make sure you have health insurance',
+                            type : 'check',
+                            linkText : 'Learn more about the Washington State Health Exchange',
+                            externalLink : 'https://www.washington.edu/ship/international-student-insurance-health-plan/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Find a Primary Doctor',
+                            type : 'check',
+                            linkText : 'Contact Hall Health for a Doctor',
+                            externalLink : 'http://depts.washington.edu/hhpccweb/contact-us/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Connect with a specialist for your needs',
+                            type : 'check',
+                            linkText : 'Contact Hall Health for a Specialist',
+                            externalLink : 'http://depts.washington.edu/hhpccweb/contact-us/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Connect with a mental health professional',
+                            type : 'check',
+                            linkText : 'Learn more about the Mental Health Clinic',
+                            externalLink : 'http://depts.washington.edu/hhpccweb/project/mental-health-clinic/'
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : 'Help keep the campus and its students safe',
+                            type : 'check',
+                            linkText : 'Learn more about the SafeCampus initiative',
+                            externalLink : 'http://depts.washington.edu/safecamp/'
+                        }
+                    ]
+                },{
+                    title : 'Other',
+                    slug : 'other',
+                    blurb: 'Here is a checklist that assists you in finding somewhere to live when you go to college.',
+                    checklist_title : null,
+                    items : [
+                        {
+                            completed: false,
+                            isRelevant : true,
+                            title : '',
+                            type : 'check',
+                            linkText : '',
+                            externalLink : ''
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : '',
+                            type : 'check',
+                            linkText : '',
+                            externalLink : ''
+                        },{
+                            completed: false,
+                            isRelevant : true,
+                            title : '',
+                            type : 'check',
+                            linkText : '',
+                            externalLink : ''
                         }
                     ]
                 }
@@ -120,7 +283,7 @@
             this.render();
 
             if ( this.isHome ) {
-                this.initChecklistPanelPages();
+                this.initHomePage();
             } else {
                 this.getPageSlug();
                 this.initChecklistPage(this.pageSlug);
@@ -130,39 +293,50 @@
 
 
 
-        initChecklistPanelPages: function() {
+        initHomePage: function() {
             if ( !scope.dLab.viewModel.checklistPages || !scope.dLab.viewModel.checklistPages.length ) {
                 return false;
             }
-
             var self = this;
+            var $content = $('#Content');
+
+            $content.html('<h3 class="home_page_callout">Choose a category to learn more.</h3>');
+            $content.append('<ul id="home_page_panel_list"></ul>');
+            var $panel_list = $('#home_page_panel_list');
 
             $.each(scope.dLab.viewModel.checklistPages, function(i, panelData) {
-                var el = $('<div class="col-md-3"></div>');
+                var classStr = 'col-md-3';
+                if (i === 0 || i === 3) { // if first or fourth
+                    classStr = classStr + ' col-md-offset-1';
+                }
+                var el = $('<li class="' + classStr + '"></li>');
                 var pagePanel= new ChecklistPageLinkPanelView({
                     el: el,
                     model: new ChecklistPageLinkPanelModel(panelData)
                 });
-                $('#Content').append(el);
+                $panel_list.append(el);
+            });
+        },
+
+        initChecklistPage: function (slug) {
+            // Determine and Update Page Level Model
+            var modelFromSlug = _.findWhere(scope.dLab.viewModel.checklistPages,{ slug : slug });
+            if ( modelFromSlug === undefined) {
+                return false;
+            }
+            this.model.set(modelFromSlug);
+            this.render();
+
+            // Init Page Specific List View
+            scope.dLab.checkListPage = new CheckListPageView({
+                el : $('#Content'),
+                model: new CheckListPageModel(modelFromSlug)
             });
         },
 
         getPageSlug: function () {
             var pathName = scope.location.pathname;
             this.pageSlug = pathName.replace('/list/', '');
-        },
-
-        initChecklistPage: function (slug) {
-            var modelFromSlug = _.findWhere(scope.dLab.viewModel.checklistPages,{ slug : slug });
-            if ( modelFromSlug === undefined) {
-                return false;
-            }
-
-            scope.dLab.checkListPage = new CheckListPageView({
-                el : $('#Content'),
-                // viewModel: modelFromSlug,
-                model: new CheckListPageModel(modelFromSlug)
-            });
         },
 
         render: function () {
@@ -179,6 +353,7 @@
 
         initialize : function() {
             this.render();
+            
         },
         
         render: function() {
@@ -200,12 +375,36 @@
             this.render();
         },
 
-        render: function() { 
+        handleListItemClick : function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var $targetItem = $(e.target);
+            var $itemParent = $targetItem.parents('.checklist_page_item');
             
-        
+            var titleToMatch = $itemParent.data('title');
+            var itemModelIndex = _.findIndex(this.model.attributes.items, {title : titleToMatch});
+
+            this.model.attributes.items[itemModelIndex].completed = !this.model.attributes.items[itemModelIndex].completed;
+            this.render();
+            // console.log(scope.dLab.appView.model.attributes);
+            scope.dLab.updateViewModel(this.model.attributes.slug, this.model.attributes);
+        },
+
+        stopListeningToItems: function () {
+            $('.check_box_link').off('click');
+        },
+
+        startListeningToItems: function () {
+            $('.check_box_link').on('click', _.bind(this.handleListItemClick, this));
+        },
+
+        render: function() {
+            this.stopListeningToItems();
             this.renderTodo();
             this.renderComplete();
             this.renderDismissed();
+            this.startListeningToItems();
             return this;
         },
 
@@ -216,7 +415,7 @@
                     todoItems.push(item);
                 }
             });
-            console.log(todoItems);
+            // console.log(todoItems);
             $('#checklistContainer > ul', this.$el).html(this.checkListTemplate({ items : todoItems }));
         },
 
@@ -227,6 +426,13 @@
                     completeItems.push(item);
                 }
             });
+
+            if ( completeItems.length) {
+                $('.completed_items_title').removeClass('hide');
+            } else {
+                $('.completed_items_title').addClass('hide');
+            }
+            
             $('#completedItems > ul', this.$el).html(this.checkListTemplate({ items : completeItems }));
         },
 
@@ -242,19 +448,11 @@
 
     });
 
-    var ChecklistItemView = Backbone.View.extend({
-
-    });
-
-    var ChecklistItemModel = Backbone.View.extend({
-
-    });
-
-    // scope.baseViewModel = ;
+    // Init App
     scope.dLab.appView = scope.dLab.appView ||
         new AppView({
             el: $('#AppEl'),
-            model: new AppModel(scope.dLab.viewModel.home)
+            model: new AppModel( scope.dLab.viewModel.home )
         });
 
 })(window, jQuery, _, Backbone);
