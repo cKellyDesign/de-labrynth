@@ -135,4 +135,26 @@ body {
   padding: 8px 0 8px 8px;
 }
 
+#page_sidebar_section .sidebar_header {
+  color: #999999;
+}
+#page_sidebar_section .sidebar_list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#page_sidebar_section .sidebar_list .sidebar_list_item {
+  display: block;
+}
+#page_sidebar_section .sidebar_list .sidebar_list_item.title {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 24px 0 0 0;
+}
+#page_sidebar_section .sidebar_list .sidebar_list_item.item {
+  font-size: 12px;
+  padding-left: 30px;
+  margin: 6px 0;
+}
+
 /*# sourceMappingURL=styles.css.map */

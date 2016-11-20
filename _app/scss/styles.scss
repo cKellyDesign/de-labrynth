@@ -161,7 +161,31 @@ $green : #7cd322;
   background-color: $green;
   padding: 8px 0 8px 8px;
 }
+
+
 #page_sidebar_section {
-  
+  .sidebar_header {
+    color: $darkGrey;
+  }
+
+  .sidebar_list {
+    margin: 0; padding: 0;
+    list-style: none;
+
+    .sidebar_list_item {
+      display: block;
+
+      &.title {
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 24px 0 0 0;
+      }
+      &.item {
+        font-size: 12px;
+        padding-left: 30px;
+        margin: 6px 0;
+      }
+    }
+  }
 }
 
