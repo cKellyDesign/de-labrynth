@@ -56,19 +56,21 @@
 <!-- Checklist Page Checklist Item -->
 <script type="text/html" id="ChecklistPageItems">
     <% _.each(items, function (item) { %>
-    <div class="checklistPageItem <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>">
+    <li class="checklist_page_item <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>">
 
         <% if (item.type === 'check') { %>
-        <div class="checkBox">
-            <h4 class="taskTitle"><%= item.title %></h4>
-        </div>
-        <a href="<%= item.externalLink %>" target="_blank"><%= item.linkText %></a>
+        <a href="#" class="check_box_link">
+            <span class="check_box_box"></span>
+            <h4 class="task_title"><%= item.title %></h4>
+        </a>
+
+        <a class="item_external_link" href="<%= item.externalLink %>" target="_blank"><%= item.linkText %></a>
         <span class="doesNotApplyBtn"></span>
         <% } else { %>
         <div class="sectionHeader"><%= item.title %></div>
         <% } %>
 
-    </div>
+    </li>
     <% }); %>
 </script>
 

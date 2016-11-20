@@ -80,4 +80,41 @@ body {
   background-color: #7cd322;
 }
 
+.checklist_page_item {
+  display: block;
+  position: relative;
+  margin-bottom: 18px;
+}
+.checklist_page_item .check_box_link {
+  display: block;
+  position: relative;
+  color: black;
+  padding-left: 21px;
+}
+.checklist_page_item .check_box_link .check_box_box {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  left: 0;
+  top: 1px;
+  border: 2px solid black;
+}
+.checklist_page_item .check_box_link .task_title {
+  display: inline;
+}
+.checklist_page_item .check_box_link:hover {
+  text-decoration: none;
+}
+.checklist_page_item .item_external_link {
+  display: inline-block;
+  margin-left: 21px;
+}
+.checklist_page_item.isComplete .check_box_box {
+  border-color: #7cd322;
+  background-color: #7cd322;
+}
+.checklist_page_item.isComplete .task_title {
+  color: #7cd322;
+}
+
 /*# sourceMappingURL=styles.css.map */

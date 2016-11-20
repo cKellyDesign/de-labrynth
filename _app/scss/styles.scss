@@ -88,7 +88,63 @@ $green : #7cd322;
       }
     }
   }
+}
 
 
+#page_conditional_section {
+  
+}
+
+#page_checklist_containers {
+  
+  
+}
+
+.checklist_page_item {
+  display: block;
+  position: relative;
+  margin-bottom: 18px;
+  
+  .check_box_link {
+    display: block;
+    position: relative;
+    color: black;
+    padding-left: 21px;
+    
+    .check_box_box {
+      position: absolute;
+      height: 15px; width: 15px;
+      left: 0; top: 1px;
+      border: 2px solid black;
+    }
+    .task_title {
+      display: inline;
+    }
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .item_external_link {
+    display: inline-block;
+    margin-left: 21px;
+  }
+
+  &.isComplete {
+    .check_box_box {
+      border-color: $green;
+      background-color: $green;
+    }
+
+    .task_title {
+      color: $green;
+      
+    }
+  }
+}
+
+#page_sidebar_section {
+  
 }
 
