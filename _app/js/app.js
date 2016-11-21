@@ -596,9 +596,12 @@
 
         renderComplete: function () {
             var completeItems = [];
+            var self = this;
             $.each(this.model.attributes.items, function (i, item) {
-                if ( item.completed && item.isRelevant) {
-                    completeItems.push(item);
+                if (  item.completed && item.isRelevant) {
+                    if ( item.condition && self.model.attributes.conditionals[item.condition].state ) {
+                        completeItems.push(item);
+                    }
                 }
             });
 
