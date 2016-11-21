@@ -31,7 +31,12 @@
 
     <!-- Home Page Panel Template-->
     <script type="text/html" id="ChecklistPageLinkPanel" class="hide">
+        <% if ( slug === 'other' ) { %>
+        <a class="panel_link" href="/<%= slug %>">
+        <% } else { %>
         <a class="panel_link" href="/list/<%= slug %>">
+        <% } %>
+
             <div class="checklist_page_link_panel">
 
                 <h3 class="panel_title"><%= title %></h3>
