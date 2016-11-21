@@ -43,10 +43,10 @@
     <!-- CHECKLIST PANEL -->
     <section id="page_checklist_containers" class="col-md-5<%= ( conditionals === {} ? ' col-md-offset-1' : '' )%>">
         <% if (checklist_title) { %>
-            <h2 class="checklist_title"><%= checklist_title %></h2>
+            <h3 class="checklist_title"><%= checklist_title %></h3>
         <% } else if (conditionals) { %>
             <% _.each(conditionals, function (cond) { %>
-            <h2  class="checklist_title <%= cond.slug %><%= (cond.state ? '' :  ' hide') %>"><%= cond.checklist_title %></h2>
+            <h3  class="checklist_title <%= cond.slug %><%= (cond.state ? '' :  ' hide') %>"><%= cond.checklist_title %></h3>
             <% }); %>
         <% } %>
 

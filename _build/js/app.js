@@ -1,6 +1,6 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
-    // scope.localStorage.clear();
+    scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
@@ -193,7 +193,7 @@
                     title : 'Registration & Orientation',
                     slug : 'registration',
                     blurb: 'Registration is the process of becoming a student at The University of Washington. Registration allows you to get a student ID number, enroll in classes, and go to orientation. Orientation is a guided session by current students and faculty to provide you with an opportunity to meet with an academic adviser, register for classes, be introduced to UW online resources and services, meet new and current students, and learn how to get involved at the UW.',
-                    checklist_title : null,
+                    checklist_title : 'My Orientation Checklist',
                     sidebar_panel : {},
                     conditionals: null,
                     items : [
@@ -237,7 +237,7 @@
                     blurb: 'Academic Advisers help students understand the UW\'s academic systems, choose a major, and discover campus resources. The career and Internship Center helps students with resumes, internships, job searching, and interviewing.',
                     checklist_title: 'My Academic Checklist',
                     sidebar_panel : {},
-                    conditionals: {},
+                    conditionals: null,
                     items : [
                         {
                             completed: false,
