@@ -41,7 +41,7 @@
     <% } %>
 
     <!-- CHECKLIST PANEL -->
-    <section id="page_checklist_containers" class="col-md-5<%= ( conditionals === {} ? ' col-md-offset-1' : '' )%>">
+    <section id="page_checklist_containers" class="col-md-5<%= (!conditionals ? ' col-md-offset-1' : '' )%>">
         <% if (checklist_title) { %>
             <h3 class="checklist_title"><%= checklist_title %></h3>
         <% } else if (conditionals) { %>
@@ -101,7 +101,7 @@
 
 <!-- Checklist Page Checklist Item -->
 <script type="text/html" id="ChecklistPageItems">
-    <% _.each(items, function (item) { %>
+    <% _.each(items, function (item, i) { %>
 
     <li class="checklist_page_item <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>" data-title="<%= item.title %>">
 
@@ -116,6 +116,15 @@
 
         <% } else if (item.type === 'html') { %>
             <%= item.html %>
+
+        <% } else if (item.type === 'ordered-check') { %>
+        <a href="#" class="check_box_link ordered">
+            <span class="check_box_box"></span>
+            <span class="ordered_check_number"><%= item.orderedIndex %></span>
+            <h4 class="task_title"><%= item.title %></h4>
+        </a>
+        <a class="item_external_link" href="<%= item.externalLink %>" target="_blank"><%= item.linkText %></a>
+
         <% } else { %>
         <div class="sectionHeader"><%= item.title %></div>
         <% } %>
