@@ -32,19 +32,21 @@
 <!-- Checklist Page Checklist Container -->
 <script type="text/html" id="ChecklistPageContainer" class="hide">
 
-    <% if (conditionals !== {}) { %>
-    <section id="page_conditional_section"  class="col-md-5 col-md-offset-1">
+    <% if (!conditionals) { %>
 
-    </section>
+    <% } else { %>
+        <section id="page_conditional_section"  class="col-md-5 col-md-offset-1">
+
+        </section>
     <% } %>
 
     <!-- CHECKLIST PANEL -->
     <section id="page_checklist_containers" class="col-md-5<%= ( conditionals === {} ? ' col-md-offset-1' : '' )%>">
         <% if (checklist_title) { %>
-            <h2 class="checklist_title"><%= checklist_title %></h2>
-        <% } else if (conditionals !== {}) { %>
+            <h3 class="checklist_title"><%= checklist_title %></h3>
+        <% } else if (conditionals) { %>
             <% _.each(conditionals, function (cond) { %>
-            <h2  class="checklist_title <%= cond.slug %><%= (cond.state ? '' :  ' hide') %>"><%= cond.checklist_title %></h2>
+            <h3  class="checklist_title <%= cond.slug %><%= (cond.state ? '' :  ' hide') %>"><%= cond.checklist_title %></h3>
             <% }); %>
         <% } %>
 
@@ -100,7 +102,7 @@
 <!-- Checklist Page Checklist Item -->
 <script type="text/html" id="ChecklistPageItems">
     <% _.each(items, function (item) { %>
-    <% if ( conditionals[item.condition] && conditionals[item.condition].state ) { %>
+
     <li class="checklist_page_item <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>" data-title="<%= item.title %>">
 
         <% if (item.type === 'check') { %>
@@ -119,7 +121,6 @@
         <% } %>
 
     </li>
-    <% } %>
     <% }); %>
 </script>
 

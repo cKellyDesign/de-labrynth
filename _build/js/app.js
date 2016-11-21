@@ -1,6 +1,6 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
-    // scope.localStorage.clear();
+    scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
@@ -51,7 +51,7 @@
                     blurb: 'Financial Aid is any grant or loan offered to help a student meet his/her college expenses. Such aid is usually provided by various sources such as federal and state agencies, colleges, and foundations.',
                     checklist_title : null,
                     sidebar_panel : {},
-                    conditionals: {},
+                    conditionals: null,
                     items : [
                         {
                             completed: true,
@@ -193,9 +193,9 @@
                     title : 'Registration & Orientation',
                     slug : 'registration',
                     blurb: 'Registration is the process of becoming a student at The University of Washington. Registration allows you to get a student ID number, enroll in classes, and go to orientation. Orientation is a guided session by current students and faculty to provide you with an opportunity to meet with an academic adviser, register for classes, be introduced to UW online resources and services, meet new and current students, and learn how to get involved at the UW.',
-                    checklist_title : null,
+                    checklist_title : 'My Orientation Checklist',
                     sidebar_panel : {},
-                    conditionals: {},
+                    conditionals: null,
                     items : [
                         {
                             completed: true,
@@ -237,7 +237,7 @@
                     blurb: 'Academic Advisers help students understand the UW\'s academic systems, choose a major, and discover campus resources. The career and Internship Center helps students with resumes, internships, job searching, and interviewing.',
                     checklist_title: 'My Academic Checklist',
                     sidebar_panel : {},
-                    conditionals: {},
+                    conditionals: null,
                     items : [
                         {
                             completed: false,
@@ -322,7 +322,7 @@
                             icon: ''
                         }]
                     },
-                    conditionals: {},
+                    conditionals: null,
                     items : [
                         {
                             completed: false,
@@ -372,7 +372,7 @@
                     blurb: 'Here is a checklist that assists you in finding somewhere to live when you go to college.',
                     checklist_title : null,
                     sidebar_panel : {},
-                    conditionals: {},
+                    conditionals: null,
                     items : [
                         {
                             completed: false,
@@ -518,6 +518,7 @@
         conditionalTemplate: _.template($('#ChecklistPageConditionalTemplate').html()),
 
         initialize : function() {
+
             this.$el.html(this.pageTemplate(this.model.attributes));
             this.$conditionalEl = $('#page_conditional_section');
 
@@ -588,7 +589,8 @@
         },
 
         renderConditionals : function (conditionalSlug) {
-            conditionalSlug = conditionalSlug || this.activeCondition.slug;
+            conditionalSlug = conditionalSlug || this.activeCondition && this.activeCondition.slug || null;
+            if (!conditionalSlug) return false;
             this.$conditionalEl.html(this.conditionalTemplate(this.model.attributes));
             $('.checklist_title').addClass('hide');
             $('.checklist_title.' + conditionalSlug).removeClass('hide');
@@ -596,9 +598,16 @@
 
         renderTodo: function () {
             var todoItems = [];
+            var self = this;
             $.each(this.model.attributes.items, function (i, item) {
                 if ( !item.completed && item.isRelevant) {
-                    todoItems.push(item);
+                    if ( !self.model.attributes.conditionals ) {
+                            todoItems.push(item);
+                    } else {
+                        if ( item.condition && self.model.attributes.conditionals[item.condition].state ) {
+                            todoItems.push(item);
+                        }
+                    }
                 }
             });
             // console.log(todoItems);
@@ -610,9 +619,15 @@
             var self = this;
             $.each(this.model.attributes.items, function (i, item) {
                 if (  item.completed && item.isRelevant) {
-                    if ( item.condition && self.model.attributes.conditionals[item.condition].state ) {
+
+                    if ( !self.model.attributes.conditionals ) {
                         completeItems.push(item);
+                    } else {
+                        if ( item.condition && self.model.attributes.conditionals[item.condition].state ) {
+                            completeItems.push(item);
+                        }
                     }
+
                 }
             });
 
