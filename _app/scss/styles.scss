@@ -170,7 +170,33 @@ $green : #7cd322;
     &:hover {
       text-decoration: none;
     }
+
+    &.ordered {
+      padding-left: 0;
+
+      .check_box_box {
+        height: 15px; width: 15px;
+        left: 12px; top: 0px;
+      }
+      .task_title {
+        display: block;
+      }
+      .ordered_check_number {
+        display: inline-block;
+        font-size: 36px;
+        line-height: 1;
+        background: grey;
+        height: 42px;
+        width: 42px;
+        text-align: center;
+        border-radius: 100%;
+        padding-top: 3px;
+        color: white;
+      }
+    }
   }
+
+
 
   .item_external_link {
     display: inline-block;
@@ -186,6 +212,24 @@ $green : #7cd322;
     .task_title,
     .item_external_link {
       color: $green;
+    }
+  }
+
+  &.ordered-check {
+    padding: 12px 0;
+    border: 1px solid $darkGrey;
+    text-align: center;
+
+    .item_external_link {
+      margin-left: 0;
+    }
+  }
+
+  &.isComplete.ordered-check {
+    border-color: $green;
+
+    .ordered_check_number {
+      background-color: $green;
     }
   }
 }

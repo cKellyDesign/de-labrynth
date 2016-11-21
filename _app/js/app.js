@@ -1,6 +1,6 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
-    scope.localStorage.clear();
+    // scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
@@ -57,26 +57,29 @@
                             completed: true,
                             isRelevant : true,
                             title : 'FAFSA',
-                            type : 'check',
+                            type : 'ordered-check',
                             linkText : 'FAFSA Homepage',
                             externalLink : 'https://fafsa.ed.gov/',
-                            condition: null
+                            condition: null,
+                            orderedIndex: 1
                         },{
                             completed: false,
                             isRelevant : true,
                             title : 'FAFSA Status',
-                            type : 'check',
+                            type : 'ordered-check',
                             linkText : 'Check your FASFA status',
                             externalLink : 'https://sdb.admin.uw.edu/sisStudents/uwnetid/finaidstatus.aspx',
-                            condition: null
+                            condition: null,
+                            orderedIndex: 2
                         },{
                             completed: false,
                             isRelevant : true,
                             title : 'Financial Aid Award Letter',
-                            type : 'check',
+                            type : 'ordered-check',
                             linkText : 'Review your Financial Aid Award Letter',
                             externalLink : 'https://sdb.admin.uw.edu/sisStudents/uwnetid/finaidstatus.aspx',
-                            condition: null
+                            condition: null,
+                            orderedIndex: 3
                         }
                     ]
                 },{
