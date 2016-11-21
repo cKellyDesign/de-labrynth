@@ -77,7 +77,8 @@ $green : #7cd322;
 
     .panel_progress {
       display: block;
-      text-align: center;;
+      text-align: center;
+      line-height: 0;
 
       .panel_progress_box {
         display: inline-block;
@@ -131,6 +132,10 @@ $green : #7cd322;
   }
 }
 
+.section_complete_title {
+  color: $green;
+  text-align: center;
+}
 
 #page_checklist_containers {
   

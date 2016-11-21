@@ -106,6 +106,16 @@
                         }
                     },
                     items : [{
+                            completed: true,
+                            isRelevant : true,
+                            condition: 'hasHousing',
+                            type: 'html',
+                            html:   '<div class="section_complete_box">' +
+                                        '<img class="section_complete_check" src="">' +
+                                        '<h4 class="section_complete_title">Congrats, you are set for housing for the school year!</h4>' +
+                                    '</div>',
+                            title: 'Congrats, you are set for housing for the school year!'
+                        },{
                             completed: false,
                             isRelevant : true,
                             title : 'Apply for on-campus housing online.',
@@ -514,6 +524,7 @@
             if (this.model.attributes.conditionals !== {}) {
                 this.activeCondition = _.findWhere(this.model.attributes.conditionals, {state: true});
             }
+            // debugger;
             this.render();
 
         },

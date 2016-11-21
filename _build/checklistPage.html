@@ -111,6 +111,9 @@
 
         <a class="item_external_link" href="<%= item.externalLink %>" target="_blank"><%= item.linkText %></a>
         <span class="doesNotApplyBtn"></span>
+
+        <% } else if (item.type === 'html') { %>
+            <%= item.html %>
         <% } else { %>
         <div class="sectionHeader"><%= item.title %></div>
         <% } %>

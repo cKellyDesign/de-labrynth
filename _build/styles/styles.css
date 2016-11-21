@@ -69,6 +69,7 @@ body {
 .panel_link .checklist_page_link_panel .panel_progress {
   display: block;
   text-align: center;
+  line-height: 0;
 }
 .panel_link .checklist_page_link_panel .panel_progress .panel_progress_box {
   display: inline-block;
@@ -112,6 +113,11 @@ body {
 }
 .conditional_item:hover {
   text-decoration: none;
+}
+
+.section_complete_title {
+  color: #7cd322;
+  text-align: center;
 }
 
 .checklist_page_item {
