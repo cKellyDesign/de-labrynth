@@ -25,6 +25,15 @@ app.get('/list/:slug', function(req, res) {
     });
 });
 
+app.get('/other', function(req, res) {
+   res.sendFile("Other.html", options, function (err) {
+       if (err) {
+           console.log(err);
+           res.send('Error - ', err.status);
+       }
+   });
+});
+
 
 // Set Public Paths
 app.use('/scripts', express.static(path.join(__dirname, '/_build/js')));

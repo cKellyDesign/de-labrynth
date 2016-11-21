@@ -366,40 +366,14 @@
                             condition: null
                         }
                     ]
-                },{
-                    title : 'Other',
-                    slug : 'other',
-                    blurb: 'Here is a checklist that assists you in finding somewhere to live when you go to college.',
-                    checklist_title : null,
-                    sidebar_panel : {},
-                    conditionals: null,
-                    items : [
-                        {
-                            completed: false,
-                            isRelevant : true,
-                            title : '',
-                            type : 'check',
-                            linkText : '',
-                            externalLink : '',
-                            condition: null
-                        },{
-                            completed: false,
-                            isRelevant : true,
-                            title : '',
-                            type : 'check',
-                            linkText : '',
-                            externalLink : '',
-                            condition: null
-                        },{
-                            completed: false,
-                            isRelevant : true,
-                            title : '',
-                            type : 'check',
-                            linkText : '',
-                            externalLink : '',
-                            condition: null
-                        }
-                    ]
+                // },{
+                //     title : 'Other',
+                //     slug : 'other',
+                //     blurb: '',
+                //     checklist_title : null,
+                //     sidebar_panel : {},
+                //     conditionals: null,
+                //     items : []
                 }
             ]
         }
