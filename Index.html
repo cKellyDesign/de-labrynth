@@ -37,7 +37,8 @@
                 <h3 class="panel_title"><%= title %></h3>
                 <div class="panel_progress">
                 <% _.each(items, function(item){ %>
-                    <div class="panel_progress_box<%= (item.completed ? ' isComplete' : '') %>"></div>
+
+                    <div class="panel_progress_box<%= (item.completed ? ' isComplete' : '') %><%= (item.condition && !conditionals[item.condition].state ? ' hide' : '') %>"></div>
                 <% }); %>
                 </div>
 
@@ -47,7 +48,7 @@
 
     <script type="text/html" id="ChecklistPageContainer" class="hide"></script>
     <script type="text/html" id="ChecklistPageItems"></script>
-
+    <script type="text/html" id="ChecklistPageConditionalTemplate"></script>
     
     <script src="/scripts/jquery-3.1.1.min.js"></script>
     <script src="/scripts/underscore-min.js"></script>

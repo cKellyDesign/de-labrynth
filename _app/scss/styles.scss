@@ -77,7 +77,8 @@ $green : #7cd322;
 
     .panel_progress {
       display: block;
-      text-align: center;;
+      text-align: center;
+      line-height: 0;
 
       .panel_progress_box {
         display: inline-block;
@@ -100,7 +101,40 @@ $green : #7cd322;
   padding: 0;
 }
 #page_conditional_section {
-  
+
+}
+
+.conditional_item {
+  display: block;
+  position: relative;
+  padding: 12px 0 12px 12px; margin: 6px 0 6px;
+  border: 1px solid $darkGrey;
+  background-color: $lightGrey;
+  cursor: pointer;
+
+  .conditional_item_title {
+    color: $darkGrey;
+    font-size: 21px;
+    margin: 0; padding: 0;
+    display: block;
+  }
+
+  &.selected {
+    background-color: $darkGrey;
+
+    .conditional_item_title {
+      color: white;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.section_complete_title {
+  color: $green;
+  text-align: center;
 }
 
 #page_checklist_containers {
@@ -161,7 +195,31 @@ $green : #7cd322;
   background-color: $green;
   padding: 8px 0 8px 8px;
 }
+
+
 #page_sidebar_section {
-  
+  .sidebar_header {
+    color: $darkGrey;
+  }
+
+  .sidebar_list {
+    margin: 0; padding: 0;
+    list-style: none;
+
+    .sidebar_list_item {
+      display: block;
+
+      &.title {
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 24px 0 0 0;
+      }
+      &.item {
+        font-size: 12px;
+        padding-left: 30px;
+        margin: 6px 0;
+      }
+    }
+  }
 }
 

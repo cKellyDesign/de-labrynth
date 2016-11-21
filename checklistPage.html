@@ -31,32 +31,76 @@
 
 <!-- Checklist Page Checklist Container -->
 <script type="text/html" id="ChecklistPageContainer" class="hide">
-    <section id="page_conditional_section"></section>
-    <section id="page_checklist_containers" class="col-md-5 col-md-offset-1">
-        <% if (checklist_title) { %><h2 class="checklist_title"><%= checklist_title %></h2><% } %>
-        <div id="checklistContainer">
 
-            <!--<h3 class="checklistPageSectionHeader">To Do</h3>-->
+    <% if (conditionals !== {}) { %>
+    <section id="page_conditional_section"  class="col-md-5 col-md-offset-1">
+
+    </section>
+    <% } %>
+
+    <!-- CHECKLIST PANEL -->
+    <section id="page_checklist_containers" class="col-md-5<%= ( conditionals === {} ? ' col-md-offset-1' : '' )%>">
+        <% if (checklist_title) { %>
+            <h2 class="checklist_title"><%= checklist_title %></h2>
+        <% } else if (conditionals !== {}) { %>
+            <% _.each(conditionals, function (cond) { %>
+            <h2  class="checklist_title <%= cond.slug %><%= (cond.state ? '' :  ' hide') %>"><%= cond.checklist_title %></h2>
+            <% }); %>
+        <% } %>
+
+        <div id="checklistContainer">
             <ul class="checklistUL"></ul>
         </div>
+
+
         <div id="completedItems">
             <h5 class="hide completed_items_title">Completed</h5>
-            <!--<h3 class="checklistPageSectionHeader">Completed</h3>-->
             <ul class="checklistUL"></ul>
         </div>
+
         <div id="notRelevantItems">
             <!--<h3 class="checklistPageSectionHeader">Dismissed</h3>-->
             <ul class="checklistUL"></ul>
         </div>
     </section>
-    <section id="page_sidebar_section"></section>
+
+    <!-- SIDEBAR PANEL -->
+    <% if (sidebar_panel !== {}) { %>
+    <section id="page_sidebar_section" class="col-md-5">
+        <% if (sidebar_panel.panel_title !== '') { %>
+        <h4 class="sidebar_header"><%= sidebar_panel.panel_title %></h4>
+        <% } %>
+
+        <ul class="sidebar_list">
+            <% _.each(sidebar_panel.items, function (item) { %>
+            <li class="sidebar_list_item  <%= item.type %>">
+                <% if (item.icon !== '') { %>
+                <span class="sidebar_item_icon"></span>
+                <% } %>
+                <div class="sidebar_item"><%= item.text %></div>
+            </li>
+            <% }); %>
+        </ul>
+    </section>
+    <% } %>
+
 </script>
 
 <script type="text/html" id="ChecklistPageLinkPanel"></script>
 
+<!-- Checklist Page Conditional Template -->
+<script type="text/html" id="ChecklistPageConditionalTemplate">
+    <% _.each(conditionals, function (cond) { %>
+    <a class="conditional_item<%= (cond.state ? ' selected' : '' ) %>" data-cond-slug="<%= cond.slug %>">
+        <h2 class="conditional_item_title"><%= cond.text %></h2>
+    </a>
+    <% }); %>
+</script>
+
 <!-- Checklist Page Checklist Item -->
 <script type="text/html" id="ChecklistPageItems">
     <% _.each(items, function (item) { %>
+    <% if ( conditionals[item.condition] && conditionals[item.condition].state ) { %>
     <li class="checklist_page_item <%= item.type %><%= (item.completed ? ' isComplete' : '') %><%= (item.isRelevant ? '' : ' notRelevant') %>" data-title="<%= item.title %>">
 
         <% if (item.type === 'check') { %>
@@ -67,13 +111,30 @@
 
         <a class="item_external_link" href="<%= item.externalLink %>" target="_blank"><%= item.linkText %></a>
         <span class="doesNotApplyBtn"></span>
+
+        <% } else if (item.type === 'html') { %>
+            <%= item.html %>
         <% } else { %>
         <div class="sectionHeader"><%= item.title %></div>
         <% } %>
 
     </li>
+    <% } %>
     <% }); %>
 </script>
+
+<!-- Checklist Page Checklist Item -->
+<script type="text/html" id="SidebarItems">
+    <% _.each(items, function (item) { %>
+    <li class="sidebar_list_item  <%= item.type %>">
+        <% if (item.icon !== '') { %>
+        <span class="sidebar_item_icon"></span>
+        <% } %>
+        <div class="sidebar_item"><%= item.text %></div>
+    </li>
+    <% }); %>
+</script>
+
 
 
 <script src="/scripts/jquery-3.1.1.min.js"></script>
