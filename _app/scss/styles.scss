@@ -100,8 +100,37 @@ $green : #7cd322;
   padding: 0;
 }
 #page_conditional_section {
-  
+
 }
+
+.conditional_item {
+  display: block;
+  position: relative;
+  padding: 12px 0 12px 12px; margin: 6px 0 6px;
+  border: 1px solid $darkGrey;
+  background-color: $lightGrey;
+  cursor: pointer;
+
+  .conditional_item_title {
+    color: $darkGrey;
+    font-size: 21px;
+    margin: 0; padding: 0;
+    display: block;
+  }
+
+  &.selected {
+    background-color: $darkGrey;
+
+    .conditional_item_title {
+      color: white;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 
 #page_checklist_containers {
   

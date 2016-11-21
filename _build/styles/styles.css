@@ -88,6 +88,32 @@ body {
   padding: 0;
 }
 
+.conditional_item {
+  display: block;
+  position: relative;
+  padding: 12px 0 12px 12px;
+  margin: 6px 0 6px;
+  border: 1px solid #999999;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.conditional_item .conditional_item_title {
+  color: #999999;
+  font-size: 21px;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.conditional_item.selected {
+  background-color: #999999;
+}
+.conditional_item.selected .conditional_item_title {
+  color: white;
+}
+.conditional_item:hover {
+  text-decoration: none;
+}
+
 .checklist_page_item {
   display: block;
   position: relative;
