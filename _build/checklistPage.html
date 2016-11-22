@@ -35,9 +35,7 @@
 <!-- Checklist Page Checklist Container -->
 <script type="text/html" id="ChecklistPageContainer" class="hide">
 
-    <% if (!conditionals) { %>
-
-    <% } else { %>
+    <% if (conditionals) { %>
         <section id="page_conditional_section"  class="col-md-6">
 
         </section>
@@ -70,7 +68,7 @@
     </section>
 
     <!-- SIDEBAR PANEL -->
-    <% if (sidebar_panel !== {}) { %>
+    <% if (sidebar_panel) { %>
     <section id="page_sidebar_section" class="col-md-6">
         <% if (sidebar_panel.panel_title !== '') { %>
         <h4 class="sidebar_header"><%= sidebar_panel.panel_title %></h4>
