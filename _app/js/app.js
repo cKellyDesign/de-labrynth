@@ -1,6 +1,11 @@
 (function(scope, $, _, Backbone) {
+
+    // Clear local Storage with ?clear on URL
+    if (location.search === "?clear" ) {
+        scope.localStorage.clear();
+    }
+
     // Define App Name Space on Window
-    // scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
@@ -201,7 +206,7 @@
                     conditionals: null,
                     items : [
                         {
-                            completed: true,
+                            completed: false,
                             isRelevant : true,
                             title : 'Husky Card',
                             type : 'check',
