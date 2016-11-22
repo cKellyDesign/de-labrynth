@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("./font-awesome.min.css");
 body {
   background-color: white;
   font-family: 'Open Sans', sans-serif;
@@ -275,6 +276,7 @@ body {
 }
 #page_sidebar_section .sidebar_list .sidebar_list_item {
   display: block;
+  position: relative;
   color: #444444;
 }
 #page_sidebar_section .sidebar_list .sidebar_list_item.title {
@@ -284,11 +286,17 @@ body {
   margin: 24px 0 0 0;
 }
 #page_sidebar_section .sidebar_list .sidebar_list_item.item {
-  padding-left: 30px;
+  padding-left: 24px;
   margin: 6px 0;
 }
 #page_sidebar_section .sidebar_list .sidebar_list_item:first-child {
   margin-top: 0;
+}
+#page_sidebar_section .sidebar_list .sidebar_list_item .sidebar_icon {
+  position: absolute;
+  left: 3px;
+  top: 4px;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=styles.css.map */

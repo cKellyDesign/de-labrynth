@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+//@import url('../gfx/fontawesome-webfont.ttf');
+@import url('./font-awesome.min.css');
 
 body {
   background-color: white;
@@ -314,6 +316,7 @@ $green : #7cd322;
 
     .sidebar_list_item {
       display: block;
+      position: relative;
       color: $grey3;
 
       &.title {
@@ -325,12 +328,18 @@ $green : #7cd322;
       }
       &.item {
         //font-size: 12px;
-        padding-left: 30px;
+        padding-left: 24px;
         margin: 6px 0;
       }
 
       &:first-child {
         margin-top: 0;
+      }
+
+      .sidebar_icon {
+        position: absolute;
+        left: 3px; top: 4px;
+        font-size: 14px;
       }
     }
   }

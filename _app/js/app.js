@@ -290,11 +290,11 @@
                         },{
                             type: 'item',
                             text: '(206) 685-1011',
-                            icon: ''
+                            icon: 'phone'
                         },{
                             type: 'item',
                             text: '4060 E. Stevens Way NE Seattle, WA 98195',
-                            icon: ''
+                            icon: 'map-marker'
                         },{
                             type: 'title',
                             text: 'Mental Health Clinic',
@@ -302,11 +302,11 @@
                         },{
                             type: 'item',
                             text: '(206) 543-5030',
-                            icon: ''
+                            icon: 'phone'
                         },{
                             type: 'item',
                             text: 'Box 354410',
-                            icon: ''
+                            icon: 'map-marker'
                         },{
                             type: 'item',
                             text: 'University of Washington',
@@ -322,7 +322,7 @@
                         },{
                             type: 'item',
                             text: '(206) 685-SAFE (7233) (24/7)',
-                            icon: ''
+                            icon: 'phone'
                         }]
                     },
                     conditionals: null,

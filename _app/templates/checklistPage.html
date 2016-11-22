@@ -80,7 +80,7 @@
             <% _.each(sidebar_panel.items, function (item) { %>
             <li class="sidebar_list_item  <%= item.type %>">
                 <% if (item.icon !== '') { %>
-                <span class="sidebar_item_icon"></span>
+                <i class="sidebar_icon fa fa-<%= item.icon %>" aria-hidden="true"></i>
                 <% } %>
                 <div class="sidebar_item"><%= item.text %></div>
             </li>
