@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 body {
   background-color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #Header {
@@ -10,27 +12,49 @@ body {
 #Header .headerContainer {
   padding: 18px 0;
 }
+#Header .headerContainer h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
+#Header .headerContainer .page_description {
+  display: inline-block;
+  max-width: 1000px;
+  font-size: 24px;
+}
 
 #TopBar {
   background-color: #f0f0f0;
-  padding: 12px 0;
+  padding: 16px 0;
 }
 #TopBar .logoLink {
-  max-height: 36px;
+  max-height: 30px;
   display: block;
   text-align: left;
 }
 #TopBar .logoLink img {
   height: 100%;
 }
+#TopBar .profile_container {
+  text-align: right;
+  color: #444444;
+  font-size: 18px;
+  padding-top: 6px;
+}
+#TopBar .profile_container p {
+  margin-bottom: 0;
+}
+#TopBar .profile_container a {
+  cursor: pointer;
+  color: #3AACE9;
+}
 
 #Content {
-  padding-top: 24px;
+  padding-top: 30px;
 }
 
 .home_page_callout {
   text-align: center;
-  margin: 0 0 24px 0;
+  margin: 0 0 30px 0;
   padding: 0;
   display: block;
 }
@@ -54,22 +78,40 @@ body {
 }
 .panel_link .checklist_page_link_panel {
   display: block;
-  padding: 24px 0;
+  position: relative;
+  padding-top: 67%;
+}
+@media (max-width: 991px) {
+  .panel_link .checklist_page_link_panel {
+    padding-top: 25%;
+  }
 }
 .panel_link .checklist_page_link_panel .panel_title {
   display: block;
-  position: relative;
-  text-align: center;
-  font-size: 18px;
-  color: black;
-  margin: 0 0 18px 0;
+  position: absolute;
+  margin: 0 12px;
   padding: 0;
-  line-height: 1;
+  top: 25%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 28px;
+  color: black;
+  line-height: 1.2;
 }
 .panel_link .checklist_page_link_panel .panel_progress {
   display: block;
+  position: absolute;
+  bottom: 21%;
+  left: 0;
+  right: 0;
   text-align: center;
   line-height: 0;
+}
+@media (max-width: 991px) {
+  .panel_link .checklist_page_link_panel .panel_progress {
+    bottom: 25%;
+  }
 }
 .panel_link .checklist_page_link_panel .panel_progress .panel_progress_box {
   display: inline-block;

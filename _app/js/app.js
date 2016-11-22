@@ -193,7 +193,7 @@
                         }
                     ]
                 },{
-                    title : 'Registration & Orientation',
+                    title : 'Orientation & Registration',
                     slug : 'registration',
                     blurb: 'Registration is the process of becoming a student at The University of Washington. Registration allows you to get a student ID number, enroll in classes, and go to orientation. Orientation is a guided session by current students and faculty to provide you with an opportunity to meet with an academic adviser, register for classes, be introduced to UW online resources and services, meet new and current students, and learn how to get involved at the UW.',
                     checklist_title : 'My Orientation Checklist',
@@ -429,9 +429,9 @@
             var $panel_list = $('#home_page_panel_list');
 
             $.each(scope.dLab.viewModel.checklistPages, function(i, panelData) {
-                var classStr = 'col-md-3';
-                if (i === 0 || i === 3) { // if first or fourth
-                    classStr = classStr + ' col-md-offset-1';
+                var classStr = 'col-md-4';
+                if (i === 3) { // if first or fourth
+                    classStr = classStr + ' col-md-offset-2';
                 }
                 var el = $('<li class="' + classStr + '"></li>');
                 var pagePanel= new ChecklistPageLinkPanelView({

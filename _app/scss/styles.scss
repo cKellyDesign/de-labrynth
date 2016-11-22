@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 body {
   background-color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 // colors
 $lightGrey : #f0f0f0;
 $darkGrey : #999999;
 $darkestGrey: #4a4a4a;
+$grey3: #444444;
+$blue: #3AACE9;
 $green : #7cd322;
 
 #Header {
@@ -14,15 +19,26 @@ $green : #7cd322;
 
   .headerContainer {
     padding: 18px 0;
+
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .page_description {
+      display: inline-block;
+      max-width: 1000px;
+      font-size: 24px;
+      //text-align: center;
+    }
   }
 }
 
 #TopBar {
   background-color: $lightGrey;
-  padding: 12px 0;
+  padding: 16px 0;
 
   .logoLink {
-    max-height: 36px;
+    max-height:30px;
     display: block;
     text-align: left;
     
@@ -30,16 +46,32 @@ $green : #7cd322;
       height: 100%;
     }
   }
+
+  .profile_container {
+    text-align: right;
+    color: $grey3;
+    font-size: 18px;
+    padding-top: 6px;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    a {
+      cursor: pointer;
+      color: $blue;
+    }
+  }
 }
 
 #Content {
-  padding-top: 24px;
+  padding-top: 30px;
 }
 
 
 .home_page_callout {
   text-align: center;
-  margin: 0 0 24px 0; padding: 0;
+  margin: 0 0 30px 0; padding: 0;
   display: block;
 }
 
@@ -63,22 +95,35 @@ $green : #7cd322;
 
 .checklist_page_link_panel {
   display: block;
-  padding: 24px 0;
+  position: relative;
+  padding-top: 67%;
+
+  @media (max-width: 991px) {
+    padding-top: 25%;
+  }
 
     .panel_title {
       display: block;
-      position: relative;
+      position: absolute;
+      margin: 0 12px; padding: 0;
+      top: 25%; left: 0; right: 0;
+
       text-align: center;
-      font-size: 18px;
+      font-size: 28px;
       color: black;
-      margin: 0 0 18px 0; padding: 0;
-      line-height: 1;
+      line-height: 1.2;
     }
 
     .panel_progress {
       display: block;
+      position: absolute;
+      bottom: 21%; left: 0; right: 0;
       text-align: center;
       line-height: 0;
+
+      @media (max-width: 991px) {
+        bottom: 25%;
+      }
 
       .panel_progress_box {
         display: inline-block;
@@ -93,6 +138,9 @@ $green : #7cd322;
         }
       }
     }
+
+
+
   }
 }
 
