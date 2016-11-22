@@ -1,6 +1,6 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
-    scope.localStorage.clear();
+    // scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
