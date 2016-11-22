@@ -1,6 +1,6 @@
 (function(scope, $, _, Backbone) {
     // Define App Name Space on Window
-    // scope.localStorage.clear();
+    scope.localStorage.clear();
     scope.dLab = scope.dLab || {
         getViewModel : function () {
             return JSON.parse(scope.localStorage.getItem('viewModel'));
@@ -54,10 +54,10 @@
                     conditionals: null,
                     items : [
                         {
-                            completed: true,
+                            completed: false,
                             isRelevant : true,
-                            title : 'FAFSA',
-                            type : 'ordered-check',
+                            title : 'Apply to FASFA for financial aid',
+                            type : 'check',
                             linkText : 'FAFSA Homepage',
                             externalLink : 'https://fafsa.ed.gov/',
                             condition: null,
@@ -65,17 +65,17 @@
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'FAFSA Status',
-                            type : 'ordered-check',
-                            linkText : 'Check your FASFA status',
+                            title : 'Check your FAFSA application status',
+                            type : 'check',
+                            linkText : 'FASFA application status',
                             externalLink : 'https://sdb.admin.uw.edu/sisStudents/uwnetid/finaidstatus.aspx',
                             condition: null,
                             orderedIndex: 2
                         },{
                             completed: false,
                             isRelevant : true,
-                            title : 'Financial Aid Award Letter',
-                            type : 'ordered-check',
+                            title : 'Review your financial aid award letter',
+                            type : 'check',
                             linkText : 'Review your Financial Aid Award Letter',
                             externalLink : 'https://sdb.admin.uw.edu/sisStudents/uwnetid/finaidstatus.aspx',
                             condition: null,
