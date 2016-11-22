@@ -55,7 +55,7 @@
                     slug : 'fin-aid',
                     blurb: 'Financial Aid is any grant or loan offered to help a student meet his/her college expenses. Such aid is usually provided by various sources such as federal and state agencies, colleges, and foundations.',
                     checklist_title : 'Your Financial Aid Checklist',
-                    sidebar_panel : {},
+                    sidebar_panel : null,
                     conditionals: null,
                     items : [
                         {
@@ -92,7 +92,7 @@
                     slug : 'housing',
                     blurb: 'Need help with finding housing options? There are on-campus housing available for UW students, for those who don\'t want to live on-campus, there are several off-campus options available as well.',
                     checklist_title: 'A Housing Checklist',
-                    sidebar_panel : {},
+                    sidebar_panel : null,
                     conditionals: {
                         hasHousing : {
                             text: 'I already found housing.',
@@ -202,7 +202,7 @@
                     slug : 'registration',
                     blurb: 'Registration is the process of becoming a student at The University of Washington. Registration allows you to get a student ID number, enroll in classes, and go to orientation. Orientation is a guided session by current students and faculty to provide you with an opportunity to meet with an academic adviser, register for classes, be introduced to UW online resources and services, meet new and current students, and learn how to get involved at the UW.',
                     checklist_title : 'My Orientation Checklist',
-                    sidebar_panel : {},
+                    sidebar_panel : null,
                     conditionals: null,
                     items : [
                         {
@@ -244,7 +244,7 @@
                     slug : 'advising',
                     blurb: 'Academic Advisers help students understand the UW\'s academic systems, choose a major, and discover campus resources. The career and Internship Center helps students with resumes, internships, job searching, and interviewing.',
                     checklist_title: 'My Academic Checklist',
-                    sidebar_panel : {},
+                    sidebar_panel : null,
                     conditionals: null,
                     items : [
                         {
