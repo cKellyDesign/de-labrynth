@@ -14,14 +14,17 @@
     <header id="Header" >
         <div id="TopBar">
             <div class="topBarContainer container">
-                <a class="logoLink" href="/">
+                <a class="logoLink col-md-6" href="/">
                     <img id="Logo" src="/images/sitewideLogo.jpg">
                 </a>
+                <div class="col-md-6 profile_container">
+                    <p>Hi John! <a>Sign Out</a></p>
+                </div>
             </div>
         </div>
         <div class="headerContainer container">
             <h2><%= title %></h2>
-            <p id="PageDescEl" class="col-md-6 col-md-offset-3"><%= blurb %></p>
+            <p id="PageDescEl" class="page_description"><%= blurb %></p>
         </div>
     </header>
     <main id="Content" class="container">
@@ -35,13 +38,13 @@
     <% if (!conditionals) { %>
 
     <% } else { %>
-        <section id="page_conditional_section"  class="col-md-5 col-md-offset-1">
+        <section id="page_conditional_section"  class="col-md-6">
 
         </section>
     <% } %>
 
     <!-- CHECKLIST PANEL -->
-    <section id="page_checklist_containers" class="col-md-5<%= (!conditionals ? ' col-md-offset-1' : '' )%>">
+    <section id="page_checklist_containers" class="col-md-6">
         <% if (checklist_title) { %>
             <h3 class="checklist_title"><%= checklist_title %></h3>
         <% } else if (conditionals) { %>
@@ -68,7 +71,7 @@
 
     <!-- SIDEBAR PANEL -->
     <% if (sidebar_panel !== {}) { %>
-    <section id="page_sidebar_section" class="col-md-5">
+    <section id="page_sidebar_section" class="col-md-6">
         <% if (sidebar_panel.panel_title !== '') { %>
         <h4 class="sidebar_header"><%= sidebar_panel.panel_title %></h4>
         <% } %>
@@ -77,7 +80,7 @@
             <% _.each(sidebar_panel.items, function (item) { %>
             <li class="sidebar_list_item  <%= item.type %>">
                 <% if (item.icon !== '') { %>
-                <span class="sidebar_item_icon"></span>
+                <i class="sidebar_icon fa fa-<%= item.icon %>" aria-hidden="true"></i>
                 <% } %>
                 <div class="sidebar_item"><%= item.text %></div>
             </li>

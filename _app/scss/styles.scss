@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+//@import url('../gfx/fontawesome-webfont.ttf');
+@import url('./font-awesome.min.css');
+
 body {
   background-color: white;
+  font-family: 'Open Sans', sans-serif;
 }
 // colors
 $lightGrey : #f0f0f0;
 $darkGrey : #999999;
 $darkestGrey: #4a4a4a;
+$grey3: #444444;
+$blue: #3AACE9;
 $green : #7cd322;
 
 #Header {
@@ -14,15 +21,26 @@ $green : #7cd322;
 
   .headerContainer {
     padding: 18px 0;
+
+    h2 {
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .page_description {
+      display: inline-block;
+      max-width: 1000px;
+      font-size: 24px;
+      //text-align: center;
+    }
   }
 }
 
 #TopBar {
   background-color: $lightGrey;
-  padding: 12px 0;
+  padding: 16px 0;
 
   .logoLink {
-    max-height: 36px;
+    max-height:30px;
     display: block;
     text-align: left;
     
@@ -30,16 +48,32 @@ $green : #7cd322;
       height: 100%;
     }
   }
+
+  .profile_container {
+    text-align: right;
+    color: $grey3;
+    font-size: 18px;
+    padding-top: 6px;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    a {
+      cursor: pointer;
+      color: $blue;
+    }
+  }
 }
 
 #Content {
-  padding-top: 24px;
+  padding-top: 30px;
 }
 
 
 .home_page_callout {
   text-align: center;
-  margin: 0 0 24px 0; padding: 0;
+  margin: 0 0 30px 0; padding: 0;
   display: block;
 }
 
@@ -63,22 +97,39 @@ $green : #7cd322;
 
 .checklist_page_link_panel {
   display: block;
-  padding: 24px 0;
+  position: relative;
+  padding-top: 67%;
+
+  @media (max-width: 991px) {
+    padding-top: 25%;
+  }
 
     .panel_title {
       display: block;
-      position: relative;
+      position: absolute;
+      margin: 0 12px; padding: 0;
+      top: 25%; left: 0; right: 0;
+
       text-align: center;
-      font-size: 18px;
+      font-size: 28px;
       color: black;
-      margin: 0 0 18px 0; padding: 0;
-      line-height: 1;
+      line-height: 1.2;
+
+      @media (min-width:1200px) {
+        top: 33%;
+      }
     }
 
     .panel_progress {
       display: block;
+      position: absolute;
+      bottom: 21%; left: 0; right: 0;
       text-align: center;
       line-height: 0;
+
+      @media (max-width: 991px) {
+        bottom: 25%;
+      }
 
       .panel_progress_box {
         display: inline-block;
@@ -94,6 +145,12 @@ $green : #7cd322;
       }
     }
   }
+}
+
+.checklist_title {
+  color: $grey3;
+  font-size: 24px;
+  margin: 0 0 24px 0;
 }
 
 .checklistUL {
@@ -145,7 +202,7 @@ $green : #7cd322;
 .checklist_page_item {
   display: block;
   position: relative;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
   
   .check_box_link {
     display: block;
@@ -165,6 +222,8 @@ $green : #7cd322;
     }
     .task_title {
       display: inline;
+      font-size: 20px;
+      color: $grey3;
     }
     
     &:hover {
@@ -201,6 +260,8 @@ $green : #7cd322;
   .item_external_link {
     display: inline-block;
     margin-left: 30px;
+    color: $blue;
+    font-size: 16px;
   }
 
   &.isComplete {
@@ -244,6 +305,9 @@ $green : #7cd322;
 #page_sidebar_section {
   .sidebar_header {
     color: $darkGrey;
+    font-size: 18px;
+    line-height: 1;
+    margin: 6px 0 24px;
   }
 
   .sidebar_list {
@@ -252,18 +316,52 @@ $green : #7cd322;
 
     .sidebar_list_item {
       display: block;
+      position: relative;
+      color: $grey3;
 
       &.title {
         text-transform: uppercase;
         font-weight: bold;
+        font-size: 18px;
+
         margin: 24px 0 0 0;
       }
       &.item {
-        font-size: 12px;
-        padding-left: 30px;
+        //font-size: 12px;
+        padding-left: 24px;
         margin: 6px 0;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .sidebar_icon {
+        position: absolute;
+        left: 3px; top: 4px;
+        font-size: 14px;
       }
     }
   }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -6px; bottom: -30px; left: -21px;
+    border-right: 1px solid #cccccc;
+
+    @media (max-width: 1199px) {
+      left: -6px;
+    }
+    
+    @media (max-width: 991px) {
+      left: 0; right: 0; top: -24px; bottom: auto;
+      border-right: none;
+      border-top: 1px solid #cccccc;
+    }
+  }
+   @media (max-width: 991px) {
+     margin-top: 48px;
+   }
 }
 

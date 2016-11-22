@@ -38,6 +38,7 @@ app.get('/other', function(req, res) {
 // Set Public Paths
 app.use('/scripts', express.static(path.join(__dirname, '/_build/js')));
 app.use('/styles', express.static(path.join(__dirname, '/_build/styles')));
+app.use('/fonts', express.static(path.join(__dirname,'/_build/fonts')));
 app.use('/images', express.static(path.join(__dirname, '/_build/images')));
 app.use('/gfx', express.static(path.join(__dirname, '/_build/gfx')));
 
