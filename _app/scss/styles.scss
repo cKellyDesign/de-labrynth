@@ -343,5 +343,25 @@ $green : #7cd322;
       }
     }
   }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -6px; bottom: -30px; left: -21px;
+    border-right: 1px solid #cccccc;
+
+    @media (max-width: 1199px) {
+      left: -6px;
+    }
+    
+    @media (max-width: 991px) {
+      left: 0; right: 0; top: -24px; bottom: auto;
+      border-right: none;
+      border-top: 1px solid #cccccc;
+    }
+  }
+   @media (max-width: 991px) {
+     margin-top: 48px;
+   }
 }
 
