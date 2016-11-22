@@ -112,6 +112,10 @@ $green : #7cd322;
       font-size: 28px;
       color: black;
       line-height: 1.2;
+
+      @media (min-width:1200px) {
+        top: 33%;
+      }
     }
 
     .panel_progress {
@@ -138,10 +142,13 @@ $green : #7cd322;
         }
       }
     }
-
-
-
   }
+}
+
+.checklist_title {
+  color: $grey3;
+  font-size: 24px;
+  margin: 0 0 24px 0;
 }
 
 .checklistUL {
@@ -193,7 +200,7 @@ $green : #7cd322;
 .checklist_page_item {
   display: block;
   position: relative;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
   
   .check_box_link {
     display: block;
@@ -213,6 +220,8 @@ $green : #7cd322;
     }
     .task_title {
       display: inline;
+      font-size: 20px;
+      color: $grey3;
     }
     
     &:hover {
@@ -249,6 +258,8 @@ $green : #7cd322;
   .item_external_link {
     display: inline-block;
     margin-left: 30px;
+    color: $blue;
+    font-size: 16px;
   }
 
   &.isComplete {
@@ -292,6 +303,9 @@ $green : #7cd322;
 #page_sidebar_section {
   .sidebar_header {
     color: $darkGrey;
+    font-size: 18px;
+    line-height: 1;
+    margin: 6px 0 24px;
   }
 
   .sidebar_list {
@@ -300,16 +314,23 @@ $green : #7cd322;
 
     .sidebar_list_item {
       display: block;
+      color: $grey3;
 
       &.title {
         text-transform: uppercase;
         font-weight: bold;
+        font-size: 18px;
+
         margin: 24px 0 0 0;
       }
       &.item {
-        font-size: 12px;
+        //font-size: 12px;
         padding-left: 30px;
         margin: 6px 0;
+      }
+
+      &:first-child {
+        margin-top: 0;
       }
     }
   }

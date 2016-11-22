@@ -38,13 +38,13 @@
     <% if (!conditionals) { %>
 
     <% } else { %>
-        <section id="page_conditional_section"  class="col-md-5 col-md-offset-1">
+        <section id="page_conditional_section"  class="col-md-6">
 
         </section>
     <% } %>
 
     <!-- CHECKLIST PANEL -->
-    <section id="page_checklist_containers" class="col-md-5<%= (!conditionals ? ' col-md-offset-1' : '' )%>">
+    <section id="page_checklist_containers" class="col-md-6">
         <% if (checklist_title) { %>
             <h3 class="checklist_title"><%= checklist_title %></h3>
         <% } else if (conditionals) { %>
@@ -71,7 +71,7 @@
 
     <!-- SIDEBAR PANEL -->
     <% if (sidebar_panel !== {}) { %>
-    <section id="page_sidebar_section" class="col-md-5">
+    <section id="page_sidebar_section" class="col-md-6">
         <% if (sidebar_panel.panel_title !== '') { %>
         <h4 class="sidebar_header"><%= sidebar_panel.panel_title %></h4>
         <% } %>

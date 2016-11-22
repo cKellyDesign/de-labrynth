@@ -49,7 +49,7 @@
                     title : 'Financial Aid',
                     slug : 'fin-aid',
                     blurb: 'Financial Aid is any grant or loan offered to help a student meet his/her college expenses. Such aid is usually provided by various sources such as federal and state agencies, colleges, and foundations.',
-                    checklist_title : null,
+                    checklist_title : 'Your Financial Aid Checklist',
                     sidebar_panel : {},
                     conditionals: null,
                     items : [
@@ -86,7 +86,7 @@
                     title : 'Housing',
                     slug : 'housing',
                     blurb: 'Need help with finding housing options? There are on-campus housing available for UW students, for those who don\'t want to live on-campus, there are several off-campus options available as well.',
-                    checklist_title: null,
+                    checklist_title: 'A Housing Checklist',
                     sidebar_panel : {},
                     conditionals: {
                         hasHousing : {
@@ -280,7 +280,7 @@
                     title : 'Health Services',
                     slug : 'health',
                     blurb: 'Hall Health Center is an comprehensive clinic that provides health care to University of Washington students, alumni, and faculty.',
-                    checklist_title : null,
+                    checklist_title : 'A Health Services Checklist',
                     sidebar_panel : {
                         panel_title: 'General Contact Info for Health Services',
                         items: [{

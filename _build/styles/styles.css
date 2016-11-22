@@ -99,6 +99,11 @@ body {
   color: black;
   line-height: 1.2;
 }
+@media (min-width: 1200px) {
+  .panel_link .checklist_page_link_panel .panel_title {
+    top: 33%;
+  }
+}
 .panel_link .checklist_page_link_panel .panel_progress {
   display: block;
   position: absolute;
@@ -124,6 +129,12 @@ body {
 .panel_link .checklist_page_link_panel .panel_progress .panel_progress_box.isComplete {
   border-color: #7cd322;
   background-color: #7cd322;
+}
+
+.checklist_title {
+  color: #444444;
+  font-size: 24px;
+  margin: 0 0 24px 0;
 }
 
 .checklistUL {
@@ -165,7 +176,7 @@ body {
 .checklist_page_item {
   display: block;
   position: relative;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 .checklist_page_item .check_box_link {
   display: block;
@@ -186,6 +197,8 @@ body {
 }
 .checklist_page_item .check_box_link .task_title {
   display: inline;
+  font-size: 20px;
+  color: #444444;
 }
 .checklist_page_item .check_box_link:hover {
   text-decoration: none;
@@ -217,6 +230,8 @@ body {
 .checklist_page_item .item_external_link {
   display: inline-block;
   margin-left: 30px;
+  color: #3AACE9;
+  font-size: 16px;
 }
 .checklist_page_item.isComplete .check_box_box {
   border-color: #7cd322;
@@ -249,6 +264,9 @@ body {
 
 #page_sidebar_section .sidebar_header {
   color: #999999;
+  font-size: 18px;
+  line-height: 1;
+  margin: 6px 0 24px;
 }
 #page_sidebar_section .sidebar_list {
   margin: 0;
@@ -257,16 +275,20 @@ body {
 }
 #page_sidebar_section .sidebar_list .sidebar_list_item {
   display: block;
+  color: #444444;
 }
 #page_sidebar_section .sidebar_list .sidebar_list_item.title {
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 18px;
   margin: 24px 0 0 0;
 }
 #page_sidebar_section .sidebar_list .sidebar_list_item.item {
-  font-size: 12px;
   padding-left: 30px;
   margin: 6px 0;
+}
+#page_sidebar_section .sidebar_list .sidebar_list_item:first-child {
+  margin-top: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */
