@@ -138,6 +138,7 @@ body {
   left: 0;
   top: 0px;
   border: 2px solid #4a4a4a;
+  background-color: white;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -197,6 +198,34 @@ body {
 }
 .checklist_page_item.isComplete.ordered-check .ordered_check_number {
   background-color: #7cd322;
+}
+.checklist_page_item.delight .task_title,
+.checklist_page_item.delight .item_external_link,
+.checklist_page_item.delight .check_box_box {
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+  transition-timing-function: ease-out;
+}
+.checklist_page_item.delight .task_title,
+.checklist_page_item.delight .item_external_link {
+  color: #7cd322;
+}
+.checklist_page_item.delight .check_box_box {
+  border-color: #7cd322;
+  background-color: #7cd322;
+}
+.checklist_page_item.delight.isComplete .task_title {
+  color: black;
+}
+.checklist_page_item.delight.isComplete .item_external_link {
+  color: #337ab7;
+}
+.checklist_page_item.delight.isComplete .check_box_box {
+  border-color: #4a4a4a;
+  background-color: white;
 }
 
 .completed_items_title {

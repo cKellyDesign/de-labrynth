@@ -532,6 +532,7 @@
             e.preventDefault();
             e.stopPropagation();
 
+            var self = this;
             var $targetItem = $(e.target);
             var $itemParent = $targetItem.parents('.checklist_page_item');
             
@@ -539,8 +540,12 @@
             var itemModelIndex = _.findIndex(this.model.attributes.items, {title : titleToMatch});
 
             this.model.attributes.items[itemModelIndex].completed = !this.model.attributes.items[itemModelIndex].completed;
-            this.render();
 
+            $itemParent.addClass('delight');
+            scope.setTimeout(function(){
+                self.render();
+                $itemParent.removeClass('delight');
+            },500);
             scope.dLab.updateViewModel(this.model.attributes.slug, this.model.attributes);
         },
 

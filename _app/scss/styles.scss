@@ -158,6 +158,7 @@ $green : #7cd322;
       height: 20px; width: 20px;
       left: 0; top: 0px;
       border: 2px solid $darkestGrey;
+      background-color: white;
 
       -webkit-border-radius: 3px;
       -moz-border-radius: 3px;
@@ -230,6 +231,42 @@ $green : #7cd322;
 
     .ordered_check_number {
       background-color: $green;
+    }
+  }
+
+  &.delight {
+
+    .task_title,
+    .item_external_link,
+    .check_box_box {
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -ms-transition: all .5s;
+      -o-transition: all .5s;
+      transition:  all .5s;
+      transition-timing-function: ease-out;
+    }
+
+    .task_title,
+    .item_external_link {
+      color: $green;
+    }
+    .check_box_box {
+      border-color: $green;
+      background-color: $green;
+    }
+  }
+  &.delight.isComplete {
+
+    .task_title {
+      color: black;
+    }
+    .item_external_link {
+      color: #337ab7;
+    }
+    .check_box_box {
+      border-color: $darkestGrey;
+      background-color: white;
     }
   }
 }
