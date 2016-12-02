@@ -54,14 +54,6 @@ body {
     font-size: 12px;
   }
 }
-#TopBar .profile_container .footer_container {
-  display: none;
-}
-@media (max-width: 426px) {
-  #TopBar .profile_container .footer_container {
-    display: block;
-  }
-}
 @media (max-width: 426px) {
   #TopBar .profile_container {
     display: none;
@@ -73,6 +65,15 @@ body {
 #TopBar .profile_container a {
   cursor: pointer;
   color: #3AACE9;
+}
+
+.profile_container.footer_container {
+  display: none;
+}
+@media (max-width: 426px) {
+  .profile_container.footer_container {
+    display: block;
+  }
 }
 
 #Content {

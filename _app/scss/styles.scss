@@ -65,14 +65,6 @@ $green : #7cd322;
       top: 18px;
       font-size: 12px;
     }
-
-    .footer_container {
-      display: none;
-
-      @media (max-width: 426px) {
-        display: block;
-      }
-    }
     
     @media (max-width: 426px) {
       display: none;
@@ -86,6 +78,14 @@ $green : #7cd322;
       cursor: pointer;
       color: $blue;
     }
+  }
+}
+
+.profile_container.footer_container {
+  display: none;
+
+  @media (max-width: 426px) {
+    display: block;
   }
 }
 
