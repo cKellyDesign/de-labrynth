@@ -43,6 +43,10 @@ $green : #7cd322;
     max-height:30px;
     display: block;
     text-align: left;
+
+    @media (max-width: 426px) {
+      text-align: center;
+    }
     
     img {
       height: 100%;
@@ -54,6 +58,25 @@ $green : #7cd322;
     color: $grey3;
     font-size: 18px;
     padding-top: 6px;
+
+    @media (max-width: 991px) {
+      position: absolute;
+      right: 0;
+      top: 18px;
+      font-size: 12px;
+    }
+
+    .footer_container {
+      display: none;
+
+      @media (max-width: 426px) {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 426px) {
+      display: none;
+    }
 
     p {
       margin-bottom: 0;

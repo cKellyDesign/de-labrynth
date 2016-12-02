@@ -32,6 +32,11 @@ body {
   display: block;
   text-align: left;
 }
+@media (max-width: 426px) {
+  #TopBar .logoLink {
+    text-align: center;
+  }
+}
 #TopBar .logoLink img {
   height: 100%;
 }
@@ -40,6 +45,27 @@ body {
   color: #444444;
   font-size: 18px;
   padding-top: 6px;
+}
+@media (max-width: 991px) {
+  #TopBar .profile_container {
+    position: absolute;
+    right: 0;
+    top: 18px;
+    font-size: 12px;
+  }
+}
+#TopBar .profile_container .footer_container {
+  display: none;
+}
+@media (max-width: 426px) {
+  #TopBar .profile_container .footer_container {
+    display: block;
+  }
+}
+@media (max-width: 426px) {
+  #TopBar .profile_container {
+    display: none;
+  }
 }
 #TopBar .profile_container p {
   margin-bottom: 0;
