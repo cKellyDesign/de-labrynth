@@ -31,6 +31,11 @@ $green : #7cd322;
       max-width: 1000px;
       font-size: 24px;
       //text-align: center;
+
+      @media (max-width: 425px) {
+        font-size: 16px;
+        padding: 0 24px;
+      }
     }
   }
 }
@@ -83,6 +88,7 @@ $green : #7cd322;
 
 .profile_container.footer_container {
   display: none;
+  margin-top: 24px;
 
   @media (max-width: 426px) {
     display: block;
@@ -194,6 +200,9 @@ $green : #7cd322;
 }
 #page_conditional_section {
 
+  @media (max-width: 425px) {
+    margin-bottom: 24px;
+  }
 }
 
 .conditional_item {

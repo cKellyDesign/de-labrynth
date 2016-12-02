@@ -22,6 +22,12 @@ body {
   max-width: 1000px;
   font-size: 24px;
 }
+@media (max-width: 425px) {
+  #Header .headerContainer .page_description {
+    font-size: 16px;
+    padding: 0 24px;
+  }
+}
 
 #TopBar {
   background-color: #f0f0f0;
@@ -69,6 +75,7 @@ body {
 
 .profile_container.footer_container {
   display: none;
+  margin-top: 24px;
 }
 @media (max-width: 426px) {
   .profile_container.footer_container {
@@ -180,6 +187,12 @@ body {
 .checklistUL {
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 425px) {
+  #page_conditional_section {
+    margin-bottom: 24px;
+  }
 }
 
 .conditional_item {
