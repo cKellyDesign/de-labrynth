@@ -101,8 +101,10 @@ $green : #7cd322;
   padding-top: 67%;
 
   @media (max-width: 991px) {
-    padding-top: 25%;
+    padding-top: 0%;
   }
+
+
 
     .panel_title {
       display: block;
@@ -118,6 +120,15 @@ $green : #7cd322;
       @media (min-width:1200px) {
         top: 33%;
       }
+
+      @media (max-width:991px) {
+        position: relative;
+        margin: 24px 0;
+      }
+
+      @media (max-width:500px) {
+        font-size: 21px;
+      }
     }
 
     .panel_progress {
@@ -128,7 +139,8 @@ $green : #7cd322;
       line-height: 0;
 
       @media (max-width: 991px) {
-        bottom: 25%;
+        position: relative;
+        margin-bottom: 24px;
       }
 
       .panel_progress_box {

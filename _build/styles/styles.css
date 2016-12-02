@@ -84,7 +84,7 @@ body {
 }
 @media (max-width: 991px) {
   .panel_link .checklist_page_link_panel {
-    padding-top: 25%;
+    padding-top: 0%;
   }
 }
 .panel_link .checklist_page_link_panel .panel_title {
@@ -105,6 +105,17 @@ body {
     top: 33%;
   }
 }
+@media (max-width: 991px) {
+  .panel_link .checklist_page_link_panel .panel_title {
+    position: relative;
+    margin: 24px 0;
+  }
+}
+@media (max-width: 500px) {
+  .panel_link .checklist_page_link_panel .panel_title {
+    font-size: 21px;
+  }
+}
 .panel_link .checklist_page_link_panel .panel_progress {
   display: block;
   position: absolute;
@@ -116,7 +127,8 @@ body {
 }
 @media (max-width: 991px) {
   .panel_link .checklist_page_link_panel .panel_progress {
-    bottom: 25%;
+    position: relative;
+    margin-bottom: 24px;
   }
 }
 .panel_link .checklist_page_link_panel .panel_progress .panel_progress_box {
