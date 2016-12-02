@@ -32,6 +32,11 @@ body {
   display: block;
   text-align: left;
 }
+@media (max-width: 426px) {
+  #TopBar .logoLink {
+    text-align: center;
+  }
+}
 #TopBar .logoLink img {
   height: 100%;
 }
@@ -40,6 +45,27 @@ body {
   color: #444444;
   font-size: 18px;
   padding-top: 6px;
+}
+@media (max-width: 991px) {
+  #TopBar .profile_container {
+    position: absolute;
+    right: 0;
+    top: 18px;
+    font-size: 12px;
+  }
+}
+#TopBar .profile_container .footer_container {
+  display: none;
+}
+@media (max-width: 426px) {
+  #TopBar .profile_container .footer_container {
+    display: block;
+  }
+}
+@media (max-width: 426px) {
+  #TopBar .profile_container {
+    display: none;
+  }
 }
 #TopBar .profile_container p {
   margin-bottom: 0;
@@ -84,7 +110,7 @@ body {
 }
 @media (max-width: 991px) {
   .panel_link .checklist_page_link_panel {
-    padding-top: 25%;
+    padding-top: 0%;
   }
 }
 .panel_link .checklist_page_link_panel .panel_title {
@@ -105,6 +131,17 @@ body {
     top: 33%;
   }
 }
+@media (max-width: 991px) {
+  .panel_link .checklist_page_link_panel .panel_title {
+    position: relative;
+    margin: 24px 0;
+  }
+}
+@media (max-width: 500px) {
+  .panel_link .checklist_page_link_panel .panel_title {
+    font-size: 21px;
+  }
+}
 .panel_link .checklist_page_link_panel .panel_progress {
   display: block;
   position: absolute;
@@ -116,7 +153,8 @@ body {
 }
 @media (max-width: 991px) {
   .panel_link .checklist_page_link_panel .panel_progress {
-    bottom: 25%;
+    position: relative;
+    margin-bottom: 24px;
   }
 }
 .panel_link .checklist_page_link_panel .panel_progress .panel_progress_box {
